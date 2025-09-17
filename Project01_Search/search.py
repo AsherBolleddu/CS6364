@@ -87,7 +87,7 @@ def depthFirstSearch(problem: SearchProblem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    
+    # GPT logic
     start = problem.getStartState() # Get the start state
     fringe = util.Stack() # DFS is implemented with stack
     visited = set() # Keep track of the nodes visited so far
@@ -114,6 +114,7 @@ def depthFirstSearch(problem: SearchProblem):
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
+    # GPT logic
     start = problem.getStartState() # Get the start state
     fringe = util.Queue() # BFS is implemented with Queue
     visited = {start} # Keep track of the nodes visited so far, intialized with start state
@@ -137,6 +138,7 @@ def breadthFirstSearch(problem: SearchProblem):
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
+    # GPT pseudocode, altered when I changed A*
     start = problem.getStartState()
     fringe = util.PriorityQueue() # Queue now has weight on it
     bestCost = {start: 0} # Necessary to keep track of the cost, cost is 0 for the start state
@@ -172,6 +174,7 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
+    # GPT pseudocode, altered when I realized it's expanding too many states
     start = problem.getStartState()
     fringe = util.PriorityQueue()
     bestCost = {start: 0} 

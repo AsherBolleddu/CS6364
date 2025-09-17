@@ -296,9 +296,12 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
+        # Frozenset is a set except it's immutable
         if self.startingPosition in self.corners:
-            visited = frozenset({self.startingPosition})
+            # If the starting position is one of the corners, we already visited one of the corners
+            visited = frozenset({self.startingPosition}) 
         else:
+            # Our start state is not one of the corners
             visited = frozenset()
 
         return (self.startingPosition, visited)
@@ -308,6 +311,7 @@ class CornersProblem(search.SearchProblem):
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
+        # Check if we visited all 4 corners
         position, visited = state
         return len(visited) == 4
 
@@ -324,23 +328,23 @@ class CornersProblem(search.SearchProblem):
         position, cornersVisited = state
         successors = []
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
+            "*** YOUR CODE HERE ***"
             # Add a successor state to the successor list if the action is legal
             # Here's a code snippet for figuring out whether a new position hits a wall:
             x,y = position
             dx, dy = Actions.directionToVector(action)
             nextx, nexty = int(x + dx), int(y + dy)
             hitsWall = self.walls[nextx][nexty]
-            if hitsWall:
+            if hitsWall: # Skip if wall
                 continue
             nextPos = (nextx, nexty)
 
-            if nextPos in self.corners:
-                nextVisited = cornersVisited | frozenset([nextPos])
+            if nextPos in self.corners: # If the next position is a corner
+                nextVisited = cornersVisited | frozenset([nextPos]) # Make a new set with that corners being true
             else:
-                nextVisited = cornersVisited
+                nextVisited = cornersVisited # Don't change anything
             successors.append(((nextPos, nextVisited), action, 1))
             
-            "*** YOUR CODE HERE ***"
         self._expanded += 1 # DO NOT CHANGE
         return successors
 
@@ -376,10 +380,21 @@ def cornersHeuristic(state: Any, problem: CornersProblem):
 
     "*** YOUR CODE HERE ***"
     (x, y), visited = state
-    remaining = [c for c in problem.corners if c not in visited]
-    if not remaining:
+    # Find which corners are not yet visited
+    unvisited = []
+    for corner in corners:
+        if corner not in visited:
+            unvisited.append(corner)
+    # If they're all visited return
+    if len(unvisited) == 0:
         return 0
-    return max(util.manhattanDistance((x, y), c) for c in remaining)
+    # Find the distance from the position to each unvisited corner
+    distances = []
+    for corner in unvisited:
+        d = util.manhattanDistance((x, y), corner)
+        distances.append(d)
+    # Go to the farthest corner first
+    return max(distances)
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
@@ -471,9 +486,26 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
     Subsequent calls to this heuristic can access
     problem.heuristicInfo['wallCount']
     """
-    position, foodGrid = state
+    position, foodGrid = state # Grid is a 2d boolean array
     "*** YOUR CODE HERE ***"
-    return 0
+    # GPT generated code
+    foods = foodGrid.asList() # Get a list of pellet coordinates
+    # If no pellets, return
+    if not foods:
+        return 0
+
+    # Store info to be reused in other calls
+    cache = problem.heuristicInfo.setdefault('mdist', {})  
+
+    distances = []
+    for food in foods:
+        key = (position, food) if position <= food else (food, position) # Need to make sure we're getting the correct key since (food, position) and (position, food) would be two different keys
+        if key not in cache:
+            cache[key] = mazeDistance(position, food, problem.startingGameState)
+        distances.append(cache[key])
+
+    return max(distances)
+
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
@@ -504,7 +536,8 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        # Do BFS to find the closest dot
+        return search.bfs(problem)
 
 class AnyFoodSearchProblem(PositionSearchProblem):
     """
@@ -540,7 +573,8 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         x,y = state
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        # Chceck if there is food on this square
+        return self.food[x][y]
 
 def mazeDistance(point1: Tuple[int, int], point2: Tuple[int, int], gameState: pacman.GameState) -> int:
     """
