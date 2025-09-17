@@ -184,8 +184,6 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
         if state in bestCost and cost > bestCost[state]:
             continue
 
-        bestCost[state] = cost
-
         if problem.isGoalState(state):
             return path
         
@@ -195,6 +193,7 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
             nextHeuristic = newCost + heuristic(nextState, problem) # Get next estimated cost
 
             if nextState not in bestCost or newCost < bestCost[nextState]:
+                bestCost[nextState] = newCost
                 fringe.push((nextState, nextPath, newCost), nextHeuristic)
     return []
 
