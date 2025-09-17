@@ -148,9 +148,7 @@ def uniformCostSearch(problem: SearchProblem):
 
         # Checks to see if the current cost is greater than the existing cost in the map if the current state is in there, if so we can just skip
         if state in bestCost and cost > bestCost[state]: 
-            continue
-
-        bestCost[state] = cost # Add the current state with the current cost
+            continue 
 
         if problem.isGoalState(state):
             return path
@@ -160,6 +158,7 @@ def uniformCostSearch(problem: SearchProblem):
             newCost = cost + stepCost # Calculate the new cost with the next edge (stepCost)
             nextPath = path + [action] 
             if nextState not in bestCost or newCost < bestCost[nextState]:
+                bestCost[nextState] = newCost
                 fringe.push((nextState, nextPath, newCost), newCost)
     return []
 
