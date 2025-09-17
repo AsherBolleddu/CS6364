@@ -87,17 +87,81 @@ def depthFirstSearch(problem: SearchProblem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    
+    start = problem.getStartState() # Get the start state
+    fringe = util.Stack() # DFS is implemented with stack
+    visited = set() # Keep track of the nodes visited so far
+
+    fringe.push((start, [])) # Initialize stack with the start state and empty path
+    
+    while not fringe.isEmpty():
+        state, path = fringe.pop() # Get the current state and path
+
+        if problem.isGoalState(state):
+            return path
+        
+        if state not in visited:
+            visited.add(state)
+
+        # Get the next state and next action (string that corresponds to North, South, East, West) from the next connected Node
+        for (nextState, action, stepCost) in problem.getSuccessors(state):
+            if nextState not in visited: 
+                nextPath = path + [action] # Add the next path to the current path
+                fringe.push((nextState, nextPath))
+
+    return []
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    start = problem.getStartState() # Get the start state
+    fringe = util.Queue() # BFS is implemented with Queue
+    visited = {start} # Keep track of the nodes visited so far, intialized with start state
+    
+    fringe.push((start, [])) # Initialize queue with start state and empty path
+
+    while not fringe.isEmpty():
+        state, path = fringe.pop() # Get the current state and path
+
+        if problem.isGoalState(state):
+            return path
+        
+        # get the next state and next action from the next connected Node
+        for (nextState, action, stepCost) in problem.getSuccessors(state):
+            if nextState not in visited:
+                nextPath = path + [action] # Add the next path to the current path
+                fringe.push((nextState, nextPath))
+                visited.add(nextState)
+    return []
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    start = problem.getStartState()
+    fringe = util.PriorityQueue() # Queue now has weight on it
+    bestCost = {start: 0} # Necessary to keep track of the cost, cost is 0 for the start state
+
+    fringe.push((start, [], 0), 0) # ((Start state, path, cost) priority) 
+    
+    while not fringe.isEmpty():
+        state, path, cost = fringe.pop()
+
+        # Checks to see if the current cost is greater than the existing cost in the map if the current state is in there, if so we can just skip
+        if state in bestCost and cost > bestCost[state]: 
+            continue
+
+        bestCost[state] = cost # Add the current state with the current cost
+
+        if problem.isGoalState(state):
+            return path
+        
+        
+        for (nextState, action, stepCost) in problem.getSuccessors(state):
+            newCost = cost + stepCost # Calculate the new cost with the next edge (stepCost)
+            nextPath = path + [action] 
+            if nextState not in bestCost or newCost < bestCost[nextState]:
+                fringe.push((nextState, nextPath, newCost), newCost)
+    return []
 
 def nullHeuristic(state, problem=None):
     """
@@ -109,7 +173,30 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    start = problem.getStartState()
+    fringe = util.PriorityQueue()
+    bestCost = {start: 0} 
+    # Heuristic h(n) estimates the cost from current node to the goal
+    fringe.push((start, [], 0), heuristic(start, problem)) 
+    while not fringe.isEmpty():
+        state, path, cost = fringe.pop()
+
+        if state in bestCost and cost > bestCost[state]:
+            continue
+
+        bestCost[state] = cost
+
+        if problem.isGoalState(state):
+            return path
+        
+        for (nextState, action, stepCost) in problem.getSuccessors(state):
+            newCost = cost + stepCost
+            nextPath = path + [action]
+            nextHeuristic = newCost + heuristic(nextState, problem) # Get next estimated cost
+
+            if nextState not in bestCost or newCost < bestCost[nextState]:
+                fringe.push((nextState, nextPath, newCost), nextHeuristic)
+    return []
 
 
 # Abbreviations
