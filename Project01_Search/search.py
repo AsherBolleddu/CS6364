@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -18,6 +18,7 @@ Pacman agents (in searchAgents.py).
 """
 
 import util
+
 
 class SearchProblem:
     """
@@ -70,7 +71,8 @@ def tinyMazeSearch(problem):
     from game import Directions
     s = Directions.SOUTH
     w = Directions.WEST
-    return  [s, s, w, s, w, w, s, w]
+    return [s, s, w, s, w, w, s, w]
+
 
 def depthFirstSearch(problem: SearchProblem):
     """
@@ -88,81 +90,90 @@ def depthFirstSearch(problem: SearchProblem):
     """
     "*** YOUR CODE HERE ***"
     # GPT logic
-    start = problem.getStartState() # Get the start state
-    fringe = util.Stack() # DFS is implemented with stack
-    visited = set() # Keep track of the nodes visited so far
+    start = problem.getStartState()  # Get the start state
+    fringe = util.Stack()  # DFS is implemented with stack
+    visited = set()  # Keep track of the nodes visited so far
 
-    fringe.push((start, [])) # Initialize stack with the start state and empty path
-    
+    # Initialize stack with the start state and empty path
+    fringe.push((start, []))
+
     while not fringe.isEmpty():
-        state, path = fringe.pop() # Get the current state and path
+        state, path = fringe.pop()  # Get the current state and path
 
         if problem.isGoalState(state):
             return path
-        
+
         if state not in visited:
             visited.add(state)
 
         # Get the next state and next action (string that corresponds to North, South, East, West) from the next connected Node
         for (nextState, action, stepCost) in problem.getSuccessors(state):
-            if nextState not in visited: 
-                nextPath = path + [action] # Add the next path to the current path
+            if nextState not in visited:
+                # Add the next path to the current path
+                nextPath = path + [action]
                 fringe.push((nextState, nextPath))
 
     return []
+
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
     # GPT logic
-    start = problem.getStartState() # Get the start state
-    fringe = util.Queue() # BFS is implemented with Queue
-    visited = {start} # Keep track of the nodes visited so far, intialized with start state
-    
-    fringe.push((start, [])) # Initialize queue with start state and empty path
+    start = problem.getStartState()  # Get the start state
+    fringe = util.Queue()  # BFS is implemented with Queue
+    # Keep track of the nodes visited so far, intialized with start state
+    visited = {start}
+
+    # Initialize queue with start state and empty path
+    fringe.push((start, []))
 
     while not fringe.isEmpty():
-        state, path = fringe.pop() # Get the current state and path
+        state, path = fringe.pop()  # Get the current state and path
 
         if problem.isGoalState(state):
             return path
-        
+
         # get the next state and next action from the next connected Node
         for (nextState, action, stepCost) in problem.getSuccessors(state):
             if nextState not in visited:
-                nextPath = path + [action] # Add the next path to the current path
+                # Add the next path to the current path
+                nextPath = path + [action]
                 fringe.push((nextState, nextPath))
                 visited.add(nextState)
     return []
+
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     # GPT pseudocode, altered when I changed A*
     start = problem.getStartState()
-    fringe = util.PriorityQueue() # Queue now has weight on it
-    bestCost = {start: 0} # Necessary to keep track of the cost, cost is 0 for the start state
+    fringe = util.PriorityQueue()  # Queue now has weight on it
+    # Necessary to keep track of the cost, cost is 0 for the start state
+    bestCost = {start: 0}
 
-    fringe.push((start, [], 0), 0) # ((Start state, path, cost) priority) 
-    
+    fringe.push((start, [], 0), 0)  # ((Start state, path, cost) priority)
+
     while not fringe.isEmpty():
         state, path, cost = fringe.pop()
 
         # Checks to see if the current cost is greater than the existing cost in the map if the current state is in there, if so we can just skip
-        if state in bestCost and cost > bestCost[state]: 
-            continue 
+        if state in bestCost and cost > bestCost[state]:
+            continue
 
         if problem.isGoalState(state):
             return path
-        
-        
+
         for (nextState, action, stepCost) in problem.getSuccessors(state):
-            newCost = cost + stepCost # Calculate the new cost with the next edge (stepCost)
-            nextPath = path + [action] 
+            # Calculate the new cost with the next edge (stepCost)
+            newCost = cost + stepCost
+            nextPath = path + [action]
             if nextState not in bestCost or newCost < bestCost[nextState]:
                 bestCost[nextState] = newCost
                 fringe.push((nextState, nextPath, newCost), newCost)
     return []
+
 
 def nullHeuristic(state, problem=None):
     """
@@ -171,15 +182,16 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
+
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    # GPT pseudocode, altered when I realized it's expanding too many states
+    # GPT pseudocode, altered when I realized it's reexpanding states
     start = problem.getStartState()
     fringe = util.PriorityQueue()
-    bestCost = {start: 0} 
+    bestCost = {start: 0}
     # Heuristic h(n) estimates the cost from current node to the goal
-    fringe.push((start, [], 0), heuristic(start, problem)) 
+    fringe.push((start, [], 0), heuristic(start, problem))
     while not fringe.isEmpty():
         state, path, cost = fringe.pop()
 
@@ -188,11 +200,12 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
 
         if problem.isGoalState(state):
             return path
-        
+
         for (nextState, action, stepCost) in problem.getSuccessors(state):
             newCost = cost + stepCost
             nextPath = path + [action]
-            nextHeuristic = newCost + heuristic(nextState, problem) # Get next estimated cost
+            # Get next estimated cost
+            nextHeuristic = newCost + heuristic(nextState, problem)
 
             if nextState not in bestCost or newCost < bestCost[nextState]:
                 bestCost[nextState] = newCost
