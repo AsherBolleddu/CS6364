@@ -64,7 +64,7 @@ joinFactorsByVariable = joinFactorsByVariableWithCallTracking()
 ########### ########### ###########
 
 
-def joinFactors(factors):
+def joinFactors(factors: List[Factor]):
     """
     Input factors is a list of factors.  
 
@@ -79,75 +79,79 @@ def joinFactors(factors):
 
     joinFactors will only allow unconditionedVariables to appear in 
     one input factor (so their join is well defined).
-
-    Hint: Factor methods that take an assignmentDict as input 
-    (such as getProbability and setProbability) can handle 
-    assignmentDicts that assign more variables than are in that factor.
-
-    Useful functions:
-    Factor.getAllPossibleAssignmentDicts
-    Factor.getProbability
-    Factor.setProbability
-    Factor.unconditionedVariables
-    Factor.conditionedVariables
-    Factor.variableDomainsDict
     """
 
-    # Convert factors to list if it's not already (handles dict_values case)
-    factors = list(factors)
-
     # typecheck portion
-    if not factors:
-        return None
-
-    # Handle single factor
-    if len(factors) == 1:
-        return factors[0]
-
     setsOfUnconditioned = [set(factor.unconditionedVariables())
                            for factor in factors]
     if len(factors) > 1:
         intersect = functools.reduce(lambda x, y: x & y, setsOfUnconditioned)
         if len(intersect) > 0:
-            print("Factor failed joinFactors typecheck: ", factors)
+            print("Factor failed joinFactors typecheck: ", factor)
             raise ValueError("unconditionedVariables can only appear in one factor. \n"
                              + "unconditionedVariables: " + str(intersect) +
                              "\nappear in more than one input factor.\n" +
                              "Input factors: \n" +
                              "\n".join(map(str, factors)))
 
-    # Collect all unconditioned and conditioned variables
-    allUnconditioned = set()
-    allConditioned = set()
+    "*** YOUR CODE HERE ***"
+    # Convert to list if it's not already (handles dict_values case)
+    if not isinstance(factors, list):
+        factors = list(factors)
+
+    # Handle edge case: if no factors provided, return None
+    if not factors or len(factors) == 0:
+        return None
+
+    # Handle edge case: if only one factor, return a copy of it
+    if len(factors) == 1:
+        factor = factors[0]
+        # Create a new factor with the same variables and probabilities
+        newFactor = Factor(factor.unconditionedVariables(),
+                           factor.conditionedVariables(),
+                           factor.variableDomainsDict())
+        for assignmentDict in factor.getAllPossibleAssignmentDicts():
+            newFactor.setProbability(
+                assignmentDict, factor.getProbability(assignmentDict))
+        return newFactor
+
+    # Collect all unconditioned and conditioned variables from all factors
+    allUnconditionedVariables = set()
+    allConditionedVariables = set()
 
     for factor in factors:
-        allUnconditioned.update(factor.unconditionedVariables())
-        allConditioned.update(factor.conditionedVariables())
+        allUnconditionedVariables = allUnconditionedVariables.union(
+            factor.unconditionedVariables())
+        allConditionedVariables = allConditionedVariables.union(
+            factor.conditionedVariables())
 
-    # Variables that appear as unconditioned in any factor stay unconditioned
-    # Variables that appear as conditioned and never unconditioned stay conditioned
-    finalUnconditioned = allUnconditioned
-    finalConditioned = allConditioned - allUnconditioned
+    # The final unconditioned variables are ALL variables that appear as unconditioned in any factor
+    # The final conditioned variables are ONLY those that appear ONLY as conditioned (never unconditioned)
+    finalUnconditionedVariables = allUnconditionedVariables
+    finalConditionedVariables = allConditionedVariables - allUnconditionedVariables
 
-    # Get the variable domains dict (should be same for all factors)
-    # variableDomainsDict is a method, not a property
+    # Get the variableDomainsDict from the first factor (they're all the same)
     variableDomainsDict = factors[0].variableDomainsDict()
 
-    # Create new factor
-    newFactor = Factor(list(finalUnconditioned), list(
-        finalConditioned), variableDomainsDict)
+    # Create the new joined factor
+    joinedFactor = Factor(finalUnconditionedVariables,
+                          finalConditionedVariables,
+                          variableDomainsDict)
 
-    # Get all possible assignments for the new factor
-    allAssignments = newFactor.getAllPossibleAssignmentDicts()
-
-    # For each assignment, multiply the probabilities from all input factors
-    for assignment in allAssignments:
-        probability = 1.0
+    # For each possible assignment in the joined factor,
+    # calculate the product of probabilities from all input factors
+    for assignmentDict in joinedFactor.getAllPossibleAssignmentDicts():
+        # Calculate the product of probabilities from all factors
+        productProb = 1.0
         for factor in factors:
-            probability *= factor.getProbability(assignment)
-        newFactor.setProbability(assignment, probability)
+            # Each factor will extract only the variables it cares about from assignmentDict
+            productProb *= factor.getProbability(assignmentDict)
 
-    return newFactor
+        # Set the probability in the joined factor
+        joinedFactor.setProbability(assignmentDict, productProb)
+
+    return joinedFactor
+    "*** END YOUR CODE HERE ***"
 
 ########### ########### ###########
 ########### QUESTION 3  ###########
@@ -156,7 +160,7 @@ def joinFactors(factors):
 
 def eliminateWithCallTracking(callTrackingList=None):
 
-    def eliminate(factor, eliminationVariable):
+    def eliminate(factor: Factor, eliminationVariable: str):
         """
         Input factor is a single factor.
         Input eliminationVariable is the variable to eliminate from factor.
@@ -178,7 +182,6 @@ def eliminateWithCallTracking(callTrackingList=None):
         Factor.conditionedVariables
         Factor.variableDomainsDict
         """
-
         # autograder tracking -- don't remove
         if not (callTrackingList is None):
             callTrackingList.append(('eliminate', eliminationVariable))
@@ -198,38 +201,40 @@ def eliminateWithCallTracking(callTrackingList=None):
                              "eliminationVariable:" + str(eliminationVariable) + "\n" +
                              "unconditionedVariables: " + str(factor.unconditionedVariables()))
 
-        # Get the unconditioned and conditioned variables
-        unconditioned = list(factor.unconditionedVariables())
-        conditioned = list(factor.conditionedVariables())
+        "*** YOUR CODE HERE ***"
+        # Get the new sets of variables after elimination
+        newUnconditionedVariables = factor.unconditionedVariables() - \
+            {eliminationVariable}
+        newConditionedVariables = factor.conditionedVariables()
 
-        # Remove the elimination variable from unconditioned
-        unconditioned.remove(eliminationVariable)
-
-        # Get variable domains - it's a method, not a property
+        # Get the variable domains
         variableDomainsDict = factor.variableDomainsDict()
 
-        # Create new factor
-        newFactor = Factor(unconditioned, conditioned, variableDomainsDict)
+        # Create the new factor with the elimination variable removed
+        newFactor = Factor(newUnconditionedVariables,
+                           newConditionedVariables,
+                           variableDomainsDict)
 
-        # Get all assignments for the new factor
-        newAssignments = newFactor.getAllPossibleAssignmentDicts()
+        # For each possible assignment in the new factor (without the elimination variable),
+        # sum up the probabilities over all values of the elimination variable
+        for assignmentDict in newFactor.getAllPossibleAssignmentDicts():
+            # Sum probabilities over all values of the elimination variable
+            sumProb = 0.0
 
-        # For each assignment in the new factor, sum over all values of eliminationVariable
-        for assignment in newAssignments:
-            totalProbability = 0.0
+            # Iterate through all possible values of the elimination variable
+            for elimValue in variableDomainsDict[eliminationVariable]:
+                # Create an extended assignment that includes the elimination variable
+                extendedAssignment = dict(assignmentDict)
+                extendedAssignment[eliminationVariable] = elimValue
 
-            # Iterate over all possible values of the elimination variable
-            for value in variableDomainsDict[eliminationVariable]:
-                # Create extended assignment including the elimination variable
-                extendedAssignment = dict(assignment)
-                extendedAssignment[eliminationVariable] = value
+                # Add the probability for this assignment
+                sumProb += factor.getProbability(extendedAssignment)
 
-                # Add the probability for this extended assignment
-                totalProbability += factor.getProbability(extendedAssignment)
-
-            newFactor.setProbability(assignment, totalProbability)
+            # Set the summed probability in the new factor
+            newFactor.setProbability(assignmentDict, sumProb)
 
         return newFactor
+        "*** END YOUR CODE HERE ***"
 
     return eliminate
 

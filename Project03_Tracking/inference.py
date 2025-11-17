@@ -18,10 +18,10 @@ from typing import List, Dict, Tuple
 import busters
 import game
 import bayesNet as bn
-from bayesNet import constructEmptyBayesNet, normalize
+from bayesNet import normalize
 import hunters
-from util import manhattanDistance, raiseNotDefined, Counter
-from factorOperations import joinFactorsByVariableWithCallTracking, joinFactors, eliminateWithCallTracking
+from util import manhattanDistance, raiseNotDefined
+from factorOperations import joinFactorsByVariableWithCallTracking, joinFactors
 from factorOperations import eliminateWithCallTracking
 
 ########### ########### ###########
@@ -29,7 +29,7 @@ from factorOperations import eliminateWithCallTracking
 ########### ########### ###########
 
 
-def constructBayesNet(gameState):
+def constructBayesNet(gameState: hunters.GameState):
     """
     Construct an empty Bayes net according to the structure given in Figure 1
     of the project description.
@@ -47,70 +47,63 @@ def constructBayesNet(gameState):
           it's non-negative and |obs - true| <= MAX_NOISE
     - this uses slightly simplified mechanics vs the ones used later for simplicity
     """
-
     # constants to use
-    layout = gameState.data.layout
-    width = layout.width
-    height = layout.height
+    PAC = "Pacman"
+    GHOST0 = "Ghost0"
+    GHOST1 = "Ghost1"
+    OBS0 = "Observation0"
+    OBS1 = "Observation1"
+    X_RANGE = gameState.getWalls().width
+    Y_RANGE = gameState.getWalls().height
     MAX_NOISE = 7
 
-    # Initialize the lists and dicts we need to populate
     variables = []
     edges = []
     variableDomainsDict = {}
 
-    # Constants - variable names MUST be these exact strings
-    PACMAN_VAR = "Pacman"
-    GHOST0_VAR = "Ghost0"
-    GHOST1_VAR = "Ghost1"
-    OBS0_VAR = "Observation0"
-    OBS1_VAR = "Observation1"
+    "*** YOUR CODE HERE ***"
+    # Add all variables to the list
+    variables = [PAC, GHOST0, GHOST1, OBS0, OBS1]
 
-    # Create list of all possible positions
-    allPositions = []
-    for x in range(width):
-        for y in range(height):
-            allPositions.append((x, y))
+    # Add edges according to the Bayes Net structure shown in the PDF
+    # Pacman -> Observation0
+    # Ghost0 -> Observation0
+    # Pacman -> Observation1
+    # Ghost1 -> Observation1
+    edges = [
+        (PAC, OBS0),     # Pacman affects Observation0
+        (GHOST0, OBS0),  # Ghost0 affects Observation0
+        (PAC, OBS1),     # Pacman affects Observation1
+        (GHOST1, OBS1)   # Ghost1 affects Observation1
+    ]
 
-    # Add variables - position variables
-    variables.append(PACMAN_VAR)
-    variables.append(GHOST0_VAR)
-    variables.append(GHOST1_VAR)
+    # Create all possible positions for Pacman and ghosts
+    # Each position is a tuple (x, y) where x and y are 0-indexed
+    all_positions = []
+    for x in range(X_RANGE):
+        for y in range(Y_RANGE):
+            all_positions.append((x, y))
 
-    # Add variables - observation variables
-    variables.append(OBS0_VAR)
-    variables.append(OBS1_VAR)
+    # Set the domain for each variable
+    # Pacman and ghosts can be at any position in the grid
+    variableDomainsDict[PAC] = all_positions
+    variableDomainsDict[GHOST0] = all_positions
+    variableDomainsDict[GHOST1] = all_positions
 
-    # Set variable domains
-    # Position variables can be at any position
-    variableDomainsDict[PACMAN_VAR] = allPositions
-    variableDomainsDict[GHOST0_VAR] = allPositions
-    variableDomainsDict[GHOST1_VAR] = allPositions
+    # Observations are noisy Manhattan distances
+    # They are non-negative and within MAX_NOISE of the true distance
+    # We need to consider all possible observation values
+    # Maximum possible Manhattan distance in the grid
+    max_manhattan_distance = (X_RANGE - 1) + (Y_RANGE - 1)
 
-    # Observation variables domain
-    # The maximum Manhattan distance is (width-1) + (height-1)
-    # Plus we need to account for noise: observed can be +/- MAX_NOISE from true distance
-    # So maximum observed distance is max_true_distance + MAX_NOISE
-    maxTrueDistance = (width - 1) + (height - 1)
-    maxObservedDistance = maxTrueDistance + MAX_NOISE
+    # Observations can range from 0 to max_manhattan_distance + MAX_NOISE
+    observation_values = list(range(max_manhattan_distance + MAX_NOISE + 1))
 
-    # Create observation domain from 0 to maxObservedDistance (inclusive)
-    observationDomain = list(range(maxObservedDistance + 1))
+    variableDomainsDict[OBS0] = observation_values
+    variableDomainsDict[OBS1] = observation_values
+    "*** END YOUR CODE HERE ***"
 
-    variableDomainsDict[OBS0_VAR] = observationDomain
-    variableDomainsDict[OBS1_VAR] = observationDomain
-
-    # Define edges according to the Bayes Net structure
-    # Each observation depends on Pacman position and its corresponding ghost position
-    # Edge format is (from, to) - parent to child
-    edges.append((PACMAN_VAR, OBS0_VAR))
-    edges.append((GHOST0_VAR, OBS0_VAR))
-    edges.append((PACMAN_VAR, OBS1_VAR))
-    edges.append((GHOST1_VAR, OBS1_VAR))
-
-    # Use the constructEmptyBayesNet helper function to create the BayesNet
-    net = constructEmptyBayesNet(variables, edges, variableDomainsDict)
-
+    net = bn.constructEmptyBayesNet(variables, edges, variableDomainsDict)
     return net
 
 
@@ -176,7 +169,7 @@ def inferenceByEnumeration(bayesNet: bn, queryVariables: List[str], evidenceDict
 
 def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
 
-    def inferenceByVariableElimination(bayesNet, queryVariables, evidenceDict, eliminationOrder):
+    def inferenceByVariableElimination(bayesNet: bn, queryVariables: List[str], evidenceDict: Dict, eliminationOrder: List[str]):
         """
         This function should perform a probabilistic inference query that
         returns the factor:
@@ -202,27 +195,8 @@ def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
 
         The sum of the probabilities should sum to one (so that it is a true 
         conditional probability, conditioned on the evidence).
-
-        bayesNet:         The Bayes Net on which we are making a query.
-        queryVariables:   A list of the variables which are unconditioned
-                          in the inference query.
-        evidenceDict:     An assignment dict {variable : value} for the
-                          variables which are presented as evidence
-                          (conditioned) in the inference query. 
-        eliminationOrder: The order to eliminate the variables in.
-
-        Hint: BayesNet.getAllCPTsWithEvidence will return all the Conditional 
-        Probability Tables even if an empty dict (or None) is passed in for 
-        evidenceDict. In this case it will not specialize any variable domains 
-        in the CPTs.
-
-        Useful functions:
-        BayesNet.getAllCPTsWithEvidence
-        normalize
-        eliminate
-        joinFactorsByVariable
-        joinFactors
         """
+
         # this is for autograding -- don't modify
         joinFactorsByVariable = joinFactorsByVariableWithCallTracking(
             callTrackingList)
@@ -232,29 +206,57 @@ def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
                 set(evidenceDict.keys())
             eliminationOrder = sorted(list(eliminationVariables))
 
-        # Get all factors from the Bayes Net
+        "*** YOUR CODE HERE ***"
+        # Get all CPTs with evidence incorporated
         factors = bayesNet.getAllCPTsWithEvidence(evidenceDict)
 
-        # Eliminate each hidden variable in order
+        # Iterate through the elimination order
         for eliminationVariable in eliminationOrder:
-            # Join all factors containing this variable
+            # Skip if the variable is a query variable or evidence variable
+            if eliminationVariable in queryVariables or eliminationVariable in evidenceDict:
+                continue
+
+            # Join all factors that contain the elimination variable
             factors, joinedFactor = joinFactorsByVariable(
                 factors, eliminationVariable)
 
-            # If the joined factor has only one unconditioned variable (the one we're eliminating),
-            # we just discard it (don't add it back to factors)
-            if len(joinedFactor.unconditionedVariables()) > 1:
-                # Eliminate the variable from the joined factor
-                eliminatedFactor = eliminate(joinedFactor, eliminationVariable)
-                factors.append(eliminatedFactor)
+            # Add the joined factor back to the list if it exists
+            if joinedFactor is not None:
+                factors.append(joinedFactor)
+
+            # Find the factor containing the elimination variable as an unconditioned variable
+            factorToEliminate = None
+            for i, factor in enumerate(factors):
+                if eliminationVariable in factor.unconditionedVariables():
+                    factorToEliminate = factor
+                    factorIndex = i
+                    break
+
+            if factorToEliminate is not None:
+                # Check if the factor has more than one unconditioned variable
+                if len(factorToEliminate.unconditionedVariables()) > 1:
+                    # Eliminate the variable from the factor
+                    eliminatedFactor = eliminate(
+                        factorToEliminate, eliminationVariable)
+                    # Replace the old factor with the new one
+                    factors[factorIndex] = eliminatedFactor
+                else:
+                    # If only one unconditioned variable, discard the factor
+                    # (as per the instructions in the docstring)
+                    factors.pop(factorIndex)
 
         # Join all remaining factors
-        finalFactor = joinFactors(factors)
+        if len(factors) == 0:
+            return None
 
-        # Normalize the final factor - normalize is a function, not a method
-        normalizedFactor = normalize(finalFactor)
+        # Join all remaining factors together
+        resultFactor = joinFactors(factors)
 
-        return normalizedFactor
+        # Normalize to get the conditional probability
+        resultFactor = normalize(resultFactor)
+
+        return resultFactor
+        "*** END YOUR CODE HERE ***"
 
     return inferenceByVariableElimination
 
@@ -401,11 +403,15 @@ class DiscreteDistribution(dict):
         {}
         """
         "*** YOUR CODE HERE ***"
-        total = self.total()
-        if total == 0:
+        totalValue = self.total()
+
+        # If total is 0, do nothing
+        if totalValue == 0:
             return
-        for key in self:
-            self[key] = self[key] / total
+
+        # Normalize each value by dividing by the total
+        for key in self.keys():
+            self[key] = self[key] / totalValue
         "*** END YOUR CODE HERE ***"
 
     def sample(self):
@@ -430,23 +436,27 @@ class DiscreteDistribution(dict):
         0.0
         """
         "*** YOUR CODE HERE ***"
+        import random
+
         # Get total weight
-        total = self.total()
-        if total == 0:
+        totalValue = self.total()
+
+        # If distribution is empty or all zeros, return None
+        if totalValue == 0:
             return None
 
-        # Generate random number between 0 and total
-        r = random.random() * total
+        # Generate a random number between 0 and totalValue
+        pick = random.random() * totalValue
 
-        # Find which key corresponds to this random value
-        cumulative = 0
+        # Find which key this corresponds to
+        runningSum = 0.0
         for key, value in self.items():
-            cumulative += value
-            if cumulative >= r:
+            runningSum += value
+            if pick <= runningSum:
                 return key
 
-        # Fallback (should not reach here)
-        return list(self.keys())[-1] if self.keys() else None
+        # This should never happen, but just in case
+        return list(self.keys())[-1]
         "*** END YOUR CODE HERE ***"
 
 
@@ -526,21 +536,21 @@ class InferenceModule:
         "*** YOUR CODE HERE ***"
         # Special case: ghost is in jail
         if ghostPosition == jailPosition:
-            # When ghost is in jail, sensor always returns None
-            if noisyDistance is None:
+            # When ghost is in jail, observation is always None
+            if noisyDistance == None:
                 return 1.0
             else:
                 return 0.0
 
         # Special case: observation is None but ghost is not in jail
-        if noisyDistance is None:
+        if noisyDistance == None:
             return 0.0
 
-        # Normal case: use the observation probability function
-        # Calculate the true Manhattan distance
+        # Normal case: calculate the probability based on true distance
         trueDistance = manhattanDistance(pacmanPosition, ghostPosition)
 
-        # Get the probability from the busters module
+        # Use the provided function to get the probability
+        # busters.getObservationProbability returns P(noisyDistance | trueDistance)
         return busters.getObservationProbability(noisyDistance, trueDistance)
         "*** END YOUR CODE HERE ***"
 
@@ -658,24 +668,24 @@ class ExactInference(InferenceModule):
         position is known.
         """
         "*** YOUR CODE HERE ***"
-        # Get the noisy distance observation and Pacman's current position
-        noisyDistance = observation
+        # Get Pacman's current position
         pacmanPosition = gameState.getPacmanPosition()
 
-        # Update beliefs for each possible ghost position
-        # We multiply the prior belief by the observation probability
-        for ghostPosition in self.allPositions:
-            # Get the probability of observing this noisy distance given the ghost position
-            observationProb = self.getObservationProb(
-                noisyDistance,
-                pacmanPosition,
-                ghostPosition,
-                self.getJailPosition()
-            )
+        # Get the jail position for this ghost
+        jailPosition = self.getJailPosition()
 
-            # Update belief using Bayes' rule:
-            # P(position | observation) ∝ P(observation | position) * P(position)
-            self.beliefs[ghostPosition] *= observationProb
+        # Update beliefs for each possible ghost position using Bayes' rule
+        # P(ghost at position | observation) ∝ P(observation | ghost at position) * P(ghost at position)
+        for ghostPosition in self.allPositions:
+            # Get the observation probability P(observation | ghost at position)
+            observationProb = self.getObservationProb(observation, pacmanPosition,
+                                                      ghostPosition, jailPosition)
+
+            # Update the belief: new_belief = P(obs | pos) * old_belief
+            # This implements Bayes' rule (without normalization, which happens at the end)
+            self.beliefs[ghostPosition] = observationProb * \
+                self.beliefs[ghostPosition]
+
         "*** END YOUR CODE HERE ***"
         self.beliefs.normalize()
 
@@ -693,7 +703,8 @@ class ExactInference(InferenceModule):
         current position is known.
         """
         "*** YOUR CODE HERE ***"
-        newBeliefs = Counter()
+        # Create a new belief distribution for the updated beliefs
+        newBeliefs = DiscreteDistribution()
 
         # For each possible current position of the ghost
         for oldPos in self.allPositions:
@@ -702,12 +713,11 @@ class ExactInference(InferenceModule):
 
             # For each possible new position and its probability
             for newPos, prob in newPosDist.items():
-                # Update belief: P(newPos) += P(oldPos) * P(newPos | oldPos)
-                newBeliefs[newPos] += self.beliefs[oldPos] * prob
+                # Update belief: P(new_pos) += P(new_pos | old_pos) * P(old_pos)
+                newBeliefs[newPos] += prob * self.beliefs[oldPos]
 
-        # Update beliefs to the new distribution
+        # Update the beliefs with the new distribution
         self.beliefs = newBeliefs
-        self.beliefs.normalize()
         "*** END YOUR CODE HERE ***"
 
     def getBeliefDistribution(self):
@@ -740,9 +750,13 @@ class ParticleFilter(InferenceModule):
         """
         self.particles = []
         "*** YOUR CODE HERE ***"
+        # Get the number of legal positions
+        numPositions = len(self.legalPositions)
+
+        # Distribute particles evenly across all legal positions
         for i in range(self.numParticles):
-            # Cycle through positions using modulo
-            position = self.legalPositions[i % len(self.legalPositions)]
+            # Use modulo to cycle through positions evenly
+            position = self.legalPositions[i % numPositions]
             self.particles.append(position)
         "*** END YOUR CODE HERE ***"
 
@@ -755,13 +769,14 @@ class ParticleFilter(InferenceModule):
         This function should return a normalized distribution.
         """
         "*** YOUR CODE HERE ***"
-        beliefs = Counter()
+        # Create a new discrete distribution
+        beliefs = DiscreteDistribution()
 
-        # Count particles at each position
+        # Count how many particles are at each position
         for particle in self.particles:
             beliefs[particle] += 1
 
-        # Normalize to convert counts to probabilities
+        # Normalize to get probabilities
         beliefs.normalize()
 
         return beliefs
@@ -784,42 +799,34 @@ class ParticleFilter(InferenceModule):
         the DiscreteDistribution may be useful.
         """
         "*** YOUR CODE HERE ***"
-
-        # Get observation and Pacman's position
-        noisyDistance = observation
+        # Get Pacman's position and jail position
         pacmanPosition = gameState.getPacmanPosition()
         jailPosition = self.getJailPosition()
 
-        # Create weight distribution for particles using DiscreteDistribution
-        # DiscreteDistribution has the sample() method we need
+        # Create a weight distribution for all particles
         weights = DiscreteDistribution()
 
-        # Calculate weight for each particle based on observation probability
+        # Calculate weight for each particle based on observation likelihood
         for particle in self.particles:
-            # Weight = P(observation | particle position)
-            weight = self.getObservationProb(
-                noisyDistance,
-                pacmanPosition,
-                particle,
-                jailPosition
-            )
-            # Accumulate weights for particles at the same position
-            weights[particle] += weight
+            # Get the probability of the observation given this particle's position
+            observationProb = self.getObservationProb(observation, pacmanPosition,
+                                                      particle, jailPosition)
+            # Store the weight for this particle position
+            weights[particle] += observationProb
 
-        # Check if all weights are zero using total() method
+        # Check if all particles have zero weight
         if weights.total() == 0:
-            # All particles have zero weight - reinitialize uniformly
+            # If so, reinitialize uniformly
             self.initializeUniformly(gameState)
         else:
             # Resample particles based on weights
             newParticles = []
-            for _ in range(self.numParticles):
-                # Sample a position from the weighted distribution
+            for i in range(self.numParticles):
+                # Sample a position from the weight distribution
                 newParticles.append(weights.sample())
 
-            # Update particles
+            # Update the particles list
             self.particles = newParticles
-
         "*** END YOUR CODE HERE ***"
 
     ########### ########### ###########
@@ -834,9 +841,9 @@ class ParticleFilter(InferenceModule):
         "*** YOUR CODE HERE ***"
         newParticles = []
 
-        # For each particle, sample its next position
+        # For each particle, sample a new position based on the transition model
         for oldPos in self.particles:
-            # Get distribution over new positions given the old position
+            # Get the distribution over new positions given the old position
             newPosDist = self.getPositionDistribution(gameState, oldPos)
 
             # Sample a new position from this distribution
@@ -845,6 +852,6 @@ class ParticleFilter(InferenceModule):
             # Add the new position to our new particle list
             newParticles.append(newPos)
 
-        # Update particles to the new positions
+        # Update the particles with the new positions
         self.particles = newParticles
         "*** END YOUR CODE HERE ***"

@@ -13,9 +13,9 @@
 
 
 from distanceCalculator import Distancer
+from game import Actions
 import util
 from util import raiseNotDefined
-from game import Actions
 from game import Agent
 from game import Directions
 from keyboardAgents import KeyboardAgent
@@ -161,27 +161,26 @@ class GreedyBustersAgent(BustersAgent):
             [beliefs for i, beliefs in enumerate(self.ghostBeliefs)
              if livingGhosts[i+1]]
         "*** YOUR CODE HERE ***"
-
         # Find the most likely position for each living ghost
-        mostLikelyPositions = []
-        for ghostBelief in livingGhostPositionDistributions:
+        mostLikelyGhostPositions = []
+        for ghostBeliefs in livingGhostPositionDistributions:
             # Get the position with highest probability for this ghost
-            mostLikelyPos = ghostBelief.argMax()
-            if mostLikelyPos is not None:
-                mostLikelyPositions.append(mostLikelyPos)
+            mostLikelyPosition = ghostBeliefs.argMax()
+            mostLikelyGhostPositions.append(mostLikelyPosition)
 
-        # If no living ghosts, return STOP
-        if not mostLikelyPositions:
+        # If there are no living ghosts, stop
+        if len(mostLikelyGhostPositions) == 0:
             return Directions.STOP
 
         # Find the closest ghost to Pacman
-        minDistance = float('inf')
-        closestGhostPos = None
-        for ghostPos in mostLikelyPositions:
-            distance = self.distancer.getDistance(pacmanPosition, ghostPos)
-            if distance < minDistance:
-                minDistance = distance
-                closestGhostPos = ghostPos
+        closestGhostDistance = float('inf')
+        closestGhostPosition = None
+        for ghostPosition in mostLikelyGhostPositions:
+            distance = self.distancer.getDistance(
+                pacmanPosition, ghostPosition)
+            if distance < closestGhostDistance:
+                closestGhostDistance = distance
+                closestGhostPosition = ghostPosition
 
         # Choose the action that minimizes distance to the closest ghost
         bestAction = None
@@ -193,9 +192,9 @@ class GreedyBustersAgent(BustersAgent):
 
             # Calculate distance from successor position to closest ghost
             distance = self.distancer.getDistance(
-                successorPosition, closestGhostPos)
+                successorPosition, closestGhostPosition)
 
-            # Update best action if this is better
+            # Update best action if this is closer
             if distance < bestDistance:
                 bestDistance = distance
                 bestAction = action
