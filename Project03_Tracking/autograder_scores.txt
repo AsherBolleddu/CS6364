@@ -1,0 +1,199 @@
+Starting on 11-17 at 11:38:56
+
+Question q1
+===========
+*** PASS: test_cases/q1/1-small-board.test
+*** PASS: test_cases/q1/2-long-bottom.test
+*** PASS: test_cases/q1/3-wide-inverted.test
+
+### Question q1: 2/2 ###
+
+
+Question q2
+===========
+*** PASS: test_cases/q2/1-product-rule.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q2/2-product-rule-extended.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q2/3-disjoint-right.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q2/4-common-right.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q2/5-grade-join.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q2/6-product-rule-nonsingleton-var.test
+***     Executed FactorEqualityTest
+
+### Question q2: 3/3 ###
+
+
+Question q3
+===========
+*** PASS: test_cases/q3/1-simple-eliminate.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q3/2-simple-eliminate-extended.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q3/3-eliminate-conditioned.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q3/4-grade-eliminate.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q3/5-simple-eliminate-nonsingleton-var.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q3/6-simple-eliminate-int.test
+***     Executed FactorEqualityTest
+
+### Question q3: 2/2 ###
+
+
+Question q4
+===========
+*** PASS: test_cases/q4/1-disconnected-eliminate.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q4/2-independent-eliminate.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q4/3-independent-eliminate-extended.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q4/4-common-effect-eliminate.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q4/5-grade-var-elim.test
+***     Executed FactorEqualityTest
+*** PASS: test_cases/q4/6-large-bayesNet-elim.test
+***     Executed FactorEqualityTest
+
+### Question q4: 2/2 ###
+
+
+Question q5
+===========
+*** PASS: test_cases/q5/1-ObsProb.test
+*** 	PASS
+
+### Question q5: 1/1 ###
+
+
+Question q6
+===========
+*** q6) Exact inference stationary pacman observe test: 0 inference errors.
+*** PASS: test_cases/q6/1-ExactUpdate.test
+*** q6) Exact inference stationary pacman observe test: 0 inference errors.
+*** PASS: test_cases/q6/2-ExactUpdate.test
+*** q6) Exact inference stationary pacman observe test: 0 inference errors.
+*** PASS: test_cases/q6/3-ExactUpdate.test
+*** q6) Exact inference stationary pacman observe test: 0 inference errors.
+*** PASS: test_cases/q6/4-ExactUpdate.test
+
+### Question q6: 2/2 ###
+
+
+Question q7
+===========
+*** q7) Exact inference elapseTime test: 0 inference errors.
+*** PASS: test_cases/q7/1-ExactPredict.test
+*** q7) Exact inference elapseTime test: 0 inference errors.
+*** PASS: test_cases/q7/2-ExactPredict.test
+*** q7) Exact inference elapseTime test: 0 inference errors.
+*** PASS: test_cases/q7/3-ExactPredict.test
+*** q7) Exact inference elapseTime test: 0 inference errors.
+*** PASS: test_cases/q7/4-ExactPredict.test
+
+### Question q7: 2/2 ###
+
+
+Question q8
+===========
+*** q8) Exact inference full test: 0 inference errors.
+*** PASS: test_cases/q8/1-ExactFull.test
+*** q8) Exact inference full test: 0 inference errors.
+*** PASS: test_cases/q8/2-ExactFull.test
+ExactInference
+[Distancer]: Switching to maze distances
+Average Score: 763.3
+Scores:        778, 769, 759, 761, 776, 761, 758, 753, 763, 755
+Win Rate:      10/10 (1.00)
+Record:        Win, Win, Win, Win, Win, Win, Win, Win, Win, Win
+*** Won 10 out of 10 games. Average score: 763.300000 ***
+*** smallHunt) Games won on q8 with score above 700: 10/10
+*** PASS: test_cases/q8/3-gameScoreTest.test
+
+### Question q8: 1/1 ###
+
+
+Question q9
+===========
+*** q9) Particle filter initialization test: 0 inference errors.
+*** PASS: test_cases/q9/1-ParticleInit.test
+
+### Question q9: 1/1 ###
+
+
+Question q10
+============
+*** q10) Particle filter observe test: 0 inference errors.
+*** PASS: test_cases/q10/1-ParticleUpdate.test
+*** q10) Particle filter observe test: 0 inference errors.
+*** PASS: test_cases/q10/2-ParticleUpdate.test
+*** q10) Particle filter observe test: 0 inference errors.
+*** PASS: test_cases/q10/3-ParticleUpdate.test
+*** q10) Particle filter observe test: 0 inference errors.
+*** PASS: test_cases/q10/4-ParticleUpdate.test
+*** q10) successfully handled all weights = 0
+*** PASS: test_cases/q10/5-ParticleUpdate.test
+ParticleFilter
+[Distancer]: Switching to maze distances
+Average Score: 180.2
+Scores:        188, 192, 198, 186, 167, 180, 184, 187, 164, 156
+Win Rate:      10/10 (1.00)
+Record:        Win, Win, Win, Win, Win, Win, Win, Win, Win, Win
+*** Won 10 out of 10 games. Average score: 180.200000 ***
+*** oneHunt) Games won on q10 with score above 100: 10/10
+*** PASS: test_cases/q10/6-ParticleUpdate.test
+
+### Question q10: 2/2 ###
+
+
+Question q11
+============
+*** q11) Particle filter full test: 0 inference errors.
+*** PASS: test_cases/q11/1-ParticlePredict.test
+*** q11) Particle filter full test: 0 inference errors.
+*** PASS: test_cases/q11/2-ParticlePredict.test
+*** q11) Particle filter full test: 0 inference errors.
+*** PASS: test_cases/q11/3-ParticlePredict.test
+*** q11) Particle filter full test: 0 inference errors.
+*** PASS: test_cases/q11/4-ParticlePredict.test
+*** q11) Particle filter full test: 0 inference errors.
+*** PASS: test_cases/q11/5-ParticlePredict.test
+ParticleFilter
+[Distancer]: Switching to maze distances
+Average Score: 364.0
+Scores:        380, 361, 361, 383, 335
+Win Rate:      5/5 (1.00)
+Record:        Win, Win, Win, Win, Win
+*** Won 5 out of 5 games. Average score: 364.000000 ***
+*** smallHunt) Games won on q11 with score above 300: 5/5
+*** PASS: test_cases/q11/6-ParticlePredict.test
+
+### Question q11: 2/2 ###
+
+
+Finished at 11:39:21
+
+Provisional grades
+==================
+Question q1: 2/2
+Question q2: 3/3
+Question q3: 2/2
+Question q4: 2/2
+Question q5: 1/1
+Question q6: 2/2
+Question q7: 2/2
+Question q8: 1/1
+Question q9: 1/1
+Question q10: 2/2
+Question q11: 2/2
+------------------
+Total: 20/20
+
+Your grades are NOT yet registered.  To register your grades, make sure
+to follow your instructor's guidelines to receive credit on your project.
+
