@@ -1,0 +1,563 @@
+
+Question q1
+===========
+*** q1) check_perceptron
+Sanity checking perceptron...
+Sanity checking perceptron weight updates...
+Sanity checking complete. Now training perceptron
+*** PASS: check_perceptron
+
+### Question q1: 6/6 ###
+
+Question q2
+===========
+*** q2) check_regression
+Your final loss is: 0.019998
+*** PASS: check_regression
+
+### Question q2: 6/6 ###
+
+Question q3
+===========
+*** q3) check_digit_classification
+Your final test set accuracy is: 97.440000%
+*** PASS: check_digit_classification
+
+### Question q3: 6/6 ###
+
+Question q4
+===========
+*** q4) check_lang_id
+Alphabet: abcdefghijklmnopqrstuvwxyzáäèéêëíïñóöúüąćęłńśźż
+
+epoch 1 iteration 35 validation-accuracy 33.2%
+  erased     English ( 30.5%)               |en 30%|es 19%|fi 14%|nl 19%|pl 17%
+  sliding    English ( 32.5%)               |en 32%|es 20%|fi 16%|nl 16%|pl 15%
+  persuade   English ( 30.1%)               |en 30%|es 20%|fi 14%|nl 17%|pl 19%
+  enterrado  Spanish ( 27.3%)               |en 25%|es 27%|fi 14%|nl 16%|pl 18%
+  conociste  Spanish ( 19.2%) Pred: English |en 30%|es 19%|fi 17%|nl 16%|pl 17%
+  cuadro     Spanish ( 26.8%)               |en 24%|es 27%|fi 14%|nl 18%|pl 17%
+  peliä      Finnish ( 22.0%)               |en 20%|es 21%|fi 22%|nl 19%|pl 19%
+  työntää    Finnish ( 24.6%)               |en 21%|es 21%|fi 25%|nl 16%|pl 17%
+  henkeä     Finnish ( 17.1%) Pred: English |en 23%|es 20%|fi 17%|nl 22%|pl 17%
+  tering     Dutch   ( 16.9%) Pred: English |en 30%|es 20%|fi 17%|nl 17%|pl 16%
+  verleiding Dutch   ( 15.9%) Pred: English |en 32%|es 20%|fi 16%|nl 16%|pl 16%
+  profiteren Dutch   ( 26.6%)               |en 23%|es 18%|fi 17%|nl 27%|pl 15%
+  kawy       Polish  ( 20.0%) Pred: English |en 24%|es 21%|fi 18%|nl 18%|pl 20%
+  spacer     Polish  ( 17.2%) Pred: English |en 27%|es 22%|fi 14%|nl 20%|pl 17%
+  kobiet     Polish  ( 16.1%) Pred: English |en 27%|es 20%|fi 14%|nl 23%|pl 16%
+epoch 1 iteration 79 validation-accuracy 41.4%
+  erased     English ( 44.4%)               |en 44%|es 12%|fi  7%|nl 23%|pl 14%
+  sliding    English ( 46.6%)               |en 47%|es 15%|fi 10%|nl 14%|pl 14%
+  persuade   English ( 34.5%)               |en 34%|es 20%|fi  8%|nl 21%|pl 17%
+  enterrado  Spanish ( 35.0%)               |en 26%|es 35%|fi  6%|nl 16%|pl 17%
+  conociste  Spanish ( 16.4%) Pred: English |en 37%|es 16%|fi 12%|nl 20%|pl 16%
+  cuadro     Spanish ( 33.8%)               |en 25%|es 34%|fi 10%|nl 14%|pl 17%
+  peliä      Finnish ( 29.5%)               |en 15%|es 17%|fi 29%|nl 17%|pl 22%
+  työntää    Finnish ( 40.1%)               |en 17%|es 17%|fi 40%|nl 11%|pl 16%
+  henkeä     Finnish ( 15.1%) Pred: Dutch   |en 26%|es 15%|fi 15%|nl 28%|pl 16%
+  tering     Dutch   ( 16.5%) Pred: English |en 41%|es 15%|fi 11%|nl 16%|pl 15%
+  verleiding Dutch   ( 18.8%) Pred: English |en 42%|es 16%|fi  8%|nl 19%|pl 15%
+  profiteren Dutch   ( 39.1%)               |en 27%|es 13%|fi 10%|nl 39%|pl 11%
+  kawy       Polish  ( 25.3%)               |en 25%|es 17%|fi 17%|nl 15%|pl 25%
+  spacer     Polish  ( 15.7%) Pred: English |en 36%|es 17%|fi  8%|nl 22%|pl 16%
+  kobiet     Polish  ( 12.7%) Pred: English |en 36%|es 12%|fi  9%|nl 30%|pl 13%
+epoch 1 iteration 123 validation-accuracy 45.2%
+  erased     English ( 49.1%)               |en 49%|es 10%|fi  1%|nl 27%|pl 12%
+  sliding    English ( 57.3%)               |en 57%|es 15%|fi  1%|nl 15%|pl 12%
+  persuade   English ( 30.1%)               |en 30%|es 25%|fi  1%|nl 26%|pl 18%
+  enterrado  Spanish ( 47.6%)               |en 19%|es 48%|fi  1%|nl 14%|pl 18%
+  conociste  Spanish ( 21.4%) Pred: English |en 31%|es 21%|fi  2%|nl 27%|pl 18%
+  cuadro     Spanish ( 51.6%)               |en 18%|es 52%|fi  2%|nl 10%|pl 18%
+  peliä      Finnish ( 17.5%) Pred: Polish  |en 11%|es 24%|fi 17%|nl 18%|pl 29%
+  työntää    Finnish ( 16.0%) Pred: Spanish |en 17%|es 31%|fi 16%|nl 15%|pl 21%
+  henkeä     Finnish (  4.7%) Pred: Dutch   |en 27%|es 15%|fi  5%|nl 37%|pl 17%
+  tering     Dutch   ( 18.1%) Pred: English |en 53%|es 14%|fi  2%|nl 18%|pl 13%
+  verleiding Dutch   ( 22.4%) Pred: English |en 46%|es 15%|fi  1%|nl 22%|pl 16%
+  profiteren Dutch   ( 48.5%)               |en 23%|es 15%|fi  3%|nl 48%|pl 11%
+  kawy       Polish  ( 34.5%)               |en 28%|es 16%|fi  6%|nl 15%|pl 35%
+  spacer     Polish  ( 17.5%) Pred: English |en 37%|es 21%|fi  2%|nl 23%|pl 17%
+  kobiet     Polish  ( 10.8%) Pred: English |en 42%|es  8%|fi  2%|nl 37%|pl 11%
+epoch 1 iteration 163 validation-accuracy 62.6%
+  erased     English ( 45.2%)               |en 45%|es  5%|fi  5%|nl 36%|pl 10%
+  sliding    English ( 67.0%)               |en 67%|es  4%|fi  4%|nl 15%|pl  9%
+  persuade   English ( 28.3%)               |en 28%|es 15%|fi  8%|nl 27%|pl 22%
+  enterrado  Spanish ( 55.3%)               |en 14%|es 55%|fi  4%|nl 11%|pl 15%
+  conociste  Spanish ( 11.1%) Pred: Finnish |en 24%|es 11%|fi 25%|nl 24%|pl 16%
+  cuadro     Spanish ( 52.2%)               |en 12%|es 52%|fi  8%|nl  7%|pl 20%
+  peliä      Finnish ( 55.3%)               |en  4%|es  6%|fi 55%|nl 15%|pl 19%
+  työntää    Finnish ( 76.4%)               |en  4%|es  4%|fi 76%|nl  7%|pl  9%
+  henkeä     Finnish ( 26.9%) Pred: Dutch   |en 12%|es  5%|fi 27%|nl 43%|pl 13%
+  tering     Dutch   ( 21.2%) Pred: English |en 60%|es  5%|fi  5%|nl 21%|pl 10%
+  verleiding Dutch   ( 19.0%) Pred: English |en 64%|es  5%|fi  4%|nl 19%|pl  9%
+  profiteren Dutch   ( 67.0%)               |en  9%|es  5%|fi 15%|nl 67%|pl  4%
+  kawy       Polish  ( 45.9%)               |en 23%|es  6%|fi 10%|nl 15%|pl 46%
+  spacer     Polish  ( 17.3%) Pred: English |en 34%|es 13%|fi  5%|nl 31%|pl 17%
+  kobiet     Polish  (  9.3%) Pred: Dutch   |en 31%|es  3%|fi  7%|nl 49%|pl  9%
+epoch 1 iteration 202 validation-accuracy 63.8%
+  erased     English ( 43.1%)               |en 43%|es  5%|fi  5%|nl 38%|pl 10%
+  sliding    English ( 58.6%)               |en 59%|es  4%|fi  7%|nl 16%|pl 14%
+  persuade   English ( 19.7%) Pred: Polish  |en 20%|es 21%|fi 11%|nl 23%|pl 25%
+  enterrado  Spanish ( 75.7%)               |en  5%|es 76%|fi  4%|nl  5%|pl 11%
+  conociste  Spanish (  8.7%) Pred: Finnish |en 12%|es  9%|fi 45%|nl 13%|pl 21%
+  cuadro     Spanish ( 62.1%)               |en  5%|es 62%|fi 10%|nl  4%|pl 19%
+  peliä      Finnish ( 65.9%)               |en  2%|es  4%|fi 66%|nl  9%|pl 19%
+  työntää    Finnish ( 88.2%)               |en  1%|es  2%|fi 88%|nl  2%|pl  7%
+  henkeä     Finnish ( 46.7%)               |en  6%|es  4%|fi 47%|nl 27%|pl 15%
+  tering     Dutch   ( 23.6%) Pred: English |en 55%|es  5%|fi  6%|nl 24%|pl 11%
+  verleiding Dutch   ( 19.6%) Pred: English |en 60%|es  5%|fi  5%|nl 20%|pl 11%
+  profiteren Dutch   ( 64.4%)               |en  7%|es  6%|fi 19%|nl 64%|pl  4%
+  kawy       Polish  ( 59.3%)               |en 14%|es  5%|fi 12%|nl 10%|pl 59%
+  spacer     Polish  ( 26.6%) Pred: Dutch   |en 24%|es 15%|fi  6%|nl 28%|pl 27%
+  kobiet     Polish  ( 11.3%) Pred: Dutch   |en 26%|es  2%|fi 11%|nl 49%|pl 11%
+epoch 1 iteration 245 validation-accuracy 67.4%
+  erased     English ( 51.5%)               |en 51%|es  5%|fi  1%|nl 37%|pl  5%
+  sliding    English ( 74.0%)               |en 74%|es  4%|fi  5%|nl 12%|pl  5%
+  persuade   English ( 27.3%) Pred: Dutch   |en 27%|es 21%|fi  5%|nl 34%|pl 12%
+  enterrado  Spanish ( 79.7%)               |en  6%|es 80%|fi  1%|nl  6%|pl  6%
+  conociste  Spanish ( 13.7%) Pred: Finnish |en 21%|es 14%|fi 27%|nl 20%|pl 18%
+  cuadro     Spanish ( 78.9%)               |en  5%|es 79%|fi  5%|nl  3%|pl  9%
+  peliä      Finnish ( 69.5%)               |en  3%|es  6%|fi 70%|nl 10%|pl 12%
+  työntää    Finnish ( 95.8%)               |en  1%|es  1%|fi 96%|nl  1%|pl  2%
+  henkeä     Finnish ( 40.5%)               |en  8%|es  7%|fi 41%|nl 33%|pl 12%
+  tering     Dutch   ( 21.5%) Pred: English |en 65%|es  5%|fi  3%|nl 21%|pl  5%
+  verleiding Dutch   ( 19.1%) Pred: English |en 69%|es  4%|fi  2%|nl 19%|pl  6%
+  profiteren Dutch   ( 73.0%)               |en  8%|es  9%|fi  7%|nl 73%|pl  2%
+  kawy       Polish  ( 52.8%)               |en 22%|es  5%|fi  8%|nl 12%|pl 53%
+  spacer     Polish  ( 12.5%) Pred: English |en 33%|es 25%|fi  3%|nl 27%|pl 13%
+  kobiet     Polish  (  5.4%) Pred: Dutch   |en 34%|es  3%|fi  6%|nl 52%|pl  5%
+epoch 2 iteration 4 validation-accuracy 71.0%
+  erased     English ( 50.1%)               |en 50%|es  5%|fi  1%|nl 37%|pl  7%
+  sliding    English ( 71.9%)               |en 72%|es  5%|fi  2%|nl 15%|pl  6%
+  persuade   English ( 25.1%) Pred: Dutch   |en 25%|es 20%|fi  4%|nl 36%|pl 15%
+  enterrado  Spanish ( 82.8%)               |en  4%|es 83%|fi  2%|nl  4%|pl  7%
+  conociste  Spanish ( 10.0%) Pred: Dutch   |en 17%|es 10%|fi 11%|nl 32%|pl 29%
+  cuadro     Spanish ( 79.6%)               |en  3%|es 80%|fi  2%|nl  3%|pl 12%
+  peliä      Finnish ( 58.7%)               |en  2%|es  5%|fi 59%|nl 11%|pl 23%
+  työntää    Finnish ( 92.2%)               |en  1%|es  2%|fi 92%|nl  2%|pl  3%
+  henkeä     Finnish ( 29.2%) Pred: Dutch   |en  7%|es  5%|fi 29%|nl 40%|pl 19%
+  tering     Dutch   ( 23.0%) Pred: English |en 62%|es  5%|fi  3%|nl 23%|pl  7%
+  verleiding Dutch   ( 19.4%) Pred: English |en 67%|es  5%|fi  2%|nl 19%|pl  7%
+  profiteren Dutch   ( 74.5%)               |en  5%|es  9%|fi  9%|nl 74%|pl  3%
+  kawy       Polish  ( 72.4%)               |en 13%|es  2%|fi  3%|nl  9%|pl 72%
+  spacer     Polish  ( 21.4%) Pred: Dutch   |en 27%|es 23%|fi  2%|nl 28%|pl 21%
+  kobiet     Polish  (  8.6%) Pred: Dutch   |en 28%|es  1%|fi  2%|nl 60%|pl  9%
+epoch 2 iteration 44 validation-accuracy 49.2%
+  erased     English ( 53.6%)               |en 54%|es  9%|fi  0%|nl 36%|pl  1%
+  sliding    English ( 55.8%)               |en 56%|es 11%|fi  1%|nl 28%|pl  4%
+  persuade   English ( 29.4%) Pred: Dutch   |en 29%|es 30%|fi  1%|nl 37%|pl  3%
+  enterrado  Spanish ( 82.3%)               |en  8%|es 82%|fi  0%|nl  8%|pl  2%
+  conociste  Spanish ( 39.4%)               |en 23%|es 39%|fi  1%|nl 33%|pl  4%
+  cuadro     Spanish ( 84.1%)               |en  6%|es 84%|fi  1%|nl  5%|pl  4%
+  peliä      Finnish ( 11.3%) Pred: Spanish |en  8%|es 38%|fi 11%|nl 31%|pl 11%
+  työntää    Finnish ( 25.7%) Pred: Spanish |en 10%|es 32%|fi 26%|nl 20%|pl 12%
+  henkeä     Finnish (  4.5%) Pred: Dutch   |en 15%|es 17%|fi  5%|nl 57%|pl  6%
+  tering     Dutch   ( 31.9%) Pred: English |en 54%|es 10%|fi  1%|nl 32%|pl  3%
+  verleiding Dutch   ( 32.9%) Pred: English |en 52%|es 12%|fi  0%|nl 33%|pl  2%
+  profiteren Dutch   ( 76.1%)               |en  9%|es 14%|fi  1%|nl 76%|pl  1%
+  kawy       Polish  ( 36.8%)               |en 33%|es 13%|fi  2%|nl 16%|pl 37%
+  spacer     Polish  (  4.0%) Pred: Dutch   |en 31%|es 32%|fi  0%|nl 33%|pl  4%
+  kobiet     Polish  (  2.1%) Pred: Dutch   |en 34%|es  7%|fi  1%|nl 56%|pl  2%
+epoch 2 iteration 86 validation-accuracy 73.0%
+  erased     English ( 62.2%)               |en 62%|es  4%|fi  1%|nl 31%|pl  3%
+  sliding    English ( 75.0%)               |en 75%|es  2%|fi  2%|nl 17%|pl  3%
+  persuade   English ( 31.3%) Pred: Dutch   |en 31%|es 21%|fi  4%|nl 35%|pl  8%
+  enterrado  Spanish ( 82.6%)               |en  5%|es 83%|fi  1%|nl  5%|pl  6%
+  conociste  Spanish ( 22.3%) Pred: English |en 24%|es 22%|fi 20%|nl 20%|pl 14%
+  cuadro     Spanish ( 80.1%)               |en  3%|es 80%|fi  3%|nl  2%|pl 11%
+  peliä      Finnish ( 79.6%)               |en  2%|es  3%|fi 80%|nl  6%|pl 10%
+  työntää    Finnish ( 94.1%)               |en  1%|es  1%|fi 94%|nl  1%|pl  4%
+  henkeä     Finnish ( 58.2%)               |en  5%|es  4%|fi 58%|nl 22%|pl 11%
+  tering     Dutch   ( 25.5%) Pred: English |en 67%|es  2%|fi  2%|nl 26%|pl  4%
+  verleiding Dutch   ( 21.2%) Pred: English |en 73%|es  2%|fi  1%|nl 21%|pl  3%
+  profiteren Dutch   ( 76.2%)               |en  6%|es  6%|fi 11%|nl 76%|pl  1%
+  kawy       Polish  ( 76.2%)               |en 12%|es  2%|fi  4%|nl  6%|pl 76%
+  spacer     Polish  ( 11.9%) Pred: English |en 33%|es 24%|fi  2%|nl 29%|pl 12%
+  kobiet     Polish  (  3.5%) Pred: Dutch   |en 34%|es  2%|fi  5%|nl 55%|pl  4%
+epoch 2 iteration 130 validation-accuracy 68.4%
+  erased     English ( 42.1%) Pred: Dutch   |en 42%|es  5%|fi  2%|nl 48%|pl  3%
+  sliding    English ( 48.9%)               |en 49%|es  3%|fi  7%|nl 36%|pl  5%
+  persuade   English ( 23.0%) Pred: Dutch   |en 23%|es 21%|fi 10%|nl 35%|pl 11%
+  enterrado  Spanish ( 84.4%)               |en  3%|es 84%|fi  3%|nl  5%|pl  5%
+  conociste  Spanish ( 17.8%) Pred: Finnish |en 20%|es 18%|fi 28%|nl 23%|pl 12%
+  cuadro     Spanish ( 84.4%)               |en  2%|es 84%|fi  5%|nl  2%|pl  6%
+  peliä      Finnish ( 83.4%)               |en  2%|es  3%|fi 83%|nl  7%|pl  6%
+  työntää    Finnish ( 93.9%)               |en  1%|es  1%|fi 94%|nl  1%|pl  3%
+  henkeä     Finnish ( 70.0%)               |en  3%|es  3%|fi 70%|nl 15%|pl  8%
+  tering     Dutch   ( 42.6%) Pred: English |en 45%|es  3%|fi  5%|nl 43%|pl  4%
+  verleiding Dutch   ( 37.3%) Pred: English |en 50%|es  3%|fi  6%|nl 37%|pl  4%
+  profiteren Dutch   ( 72.6%)               |en  6%|es  5%|fi 15%|nl 73%|pl  1%
+  kawy       Polish  ( 55.2%)               |en 15%|es  6%|fi 13%|nl 11%|pl 55%
+  spacer     Polish  (  9.9%) Pred: Spanish |en 25%|es 32%|fi  4%|nl 30%|pl 10%
+  kobiet     Polish  (  4.4%) Pred: Dutch   |en 21%|es  3%|fi 16%|nl 56%|pl  4%
+epoch 2 iteration 176 validation-accuracy 60.0%
+  erased     English ( 50.9%)               |en 51%|es  2%|fi  0%|nl 46%|pl  1%
+  sliding    English ( 74.4%)               |en 74%|es  2%|fi  0%|nl 23%|pl  1%
+  persuade   English ( 27.8%) Pred: Dutch   |en 28%|es 13%|fi  1%|nl 57%|pl  2%
+  enterrado  Spanish ( 82.0%)               |en  6%|es 82%|fi  0%|nl 11%|pl  1%
+  conociste  Spanish ( 27.7%) Pred: Dutch   |en 21%|es 28%|fi  3%|nl 47%|pl  1%
+  cuadro     Spanish ( 94.9%)               |en  1%|es 95%|fi  0%|nl  2%|pl  2%
+  peliä      Finnish ( 62.4%)               |en  3%|es  8%|fi 62%|nl 20%|pl  6%
+  työntää    Finnish ( 92.4%)               |en  2%|es  1%|fi 92%|nl  4%|pl  1%
+  henkeä     Finnish ( 30.0%) Pred: Dutch   |en  7%|es  3%|fi 30%|nl 56%|pl  4%
+  tering     Dutch   ( 30.6%) Pred: English |en 67%|es  1%|fi  0%|nl 31%|pl  1%
+  verleiding Dutch   ( 27.3%) Pred: English |en 71%|es  1%|fi  0%|nl 27%|pl  0%
+  profiteren Dutch   ( 92.9%)               |en  4%|es  2%|fi  1%|nl 93%|pl  0%
+  kawy       Polish  ( 60.5%)               |en 26%|es  3%|fi  1%|nl  9%|pl 60%
+  spacer     Polish  (  4.2%) Pred: Dutch   |en 30%|es 29%|fi  0%|nl 36%|pl  4%
+  kobiet     Polish  (  1.3%) Pred: Dutch   |en 37%|es  1%|fi  1%|nl 59%|pl  1%
+epoch 2 iteration 222 validation-accuracy 63.4%
+  erased     English ( 39.4%) Pred: Dutch   |en 39%|es  2%|fi  0%|nl 55%|pl  4%
+  sliding    English ( 44.7%) Pred: Dutch   |en 45%|es  1%|fi  2%|nl 45%|pl  7%
+  persuade   English ( 13.0%) Pred: Dutch   |en 13%|es  5%|fi  2%|nl 71%|pl  9%
+  enterrado  Spanish ( 77.3%)               |en  2%|es 77%|fi  3%|nl  9%|pl  9%
+  conociste  Spanish ( 16.4%) Pred: Dutch   |en 10%|es 16%|fi 11%|nl 42%|pl 21%
+  cuadro     Spanish ( 84.7%)               |en  1%|es 85%|fi  2%|nl  3%|pl 10%
+  peliä      Finnish ( 72.7%)               |en  1%|es  2%|fi 73%|nl 10%|pl 14%
+  työntää    Finnish ( 97.3%)               |en  0%|es  0%|fi 97%|nl  0%|pl  2%
+  henkeä     Finnish ( 58.0%)               |en  1%|es  1%|fi 58%|nl 21%|pl 18%
+  tering     Dutch   ( 51.8%)               |en 38%|es  1%|fi  1%|nl 52%|pl  8%
+  verleiding Dutch   ( 50.2%)               |en 40%|es  1%|fi  2%|nl 50%|pl  7%
+  profiteren Dutch   ( 88.2%)               |en  3%|es  3%|fi  5%|nl 88%|pl  1%
+  kawy       Polish  ( 90.7%)               |en  4%|es  0%|fi  1%|nl  3%|pl 91%
+  spacer     Polish  ( 11.1%) Pred: Dutch   |en 21%|es 15%|fi  1%|nl 53%|pl 11%
+  kobiet     Polish  (  5.9%) Pred: Dutch   |en 13%|es  1%|fi  8%|nl 73%|pl  6%
+epoch 2 iteration 269 validation-accuracy 76.0%
+  erased     English ( 87.4%)               |en 87%|es  1%|fi  0%|nl 10%|pl  1%
+  sliding    English ( 87.7%)               |en 88%|es  0%|fi  0%|nl 10%|pl  1%
+  persuade   English ( 34.0%) Pred: Dutch   |en 34%|es 20%|fi  2%|nl 40%|pl  4%
+  enterrado  Spanish ( 95.5%)               |en  2%|es 96%|fi  1%|nl  1%|pl  1%
+  conociste  Spanish ( 26.5%) Pred: English |en 37%|es 26%|fi 10%|nl 16%|pl 10%
+  cuadro     Spanish ( 93.8%)               |en  1%|es 94%|fi  0%|nl  0%|pl  4%
+  peliä      Finnish ( 84.8%)               |en  1%|es  2%|fi 85%|nl  7%|pl  5%
+  työntää    Finnish ( 99.5%)               |en  0%|es  0%|fi 99%|nl  0%|pl  0%
+  henkeä     Finnish ( 67.6%)               |en  2%|es  1%|fi 68%|nl 21%|pl  8%
+  tering     Dutch   ( 20.9%) Pred: English |en 77%|es  0%|fi  0%|nl 21%|pl  2%
+  verleiding Dutch   ( 19.8%) Pred: English |en 79%|es  0%|fi  0%|nl 20%|pl  1%
+  profiteren Dutch   ( 81.5%)               |en  6%|es  7%|fi  5%|nl 81%|pl  0%
+  kawy       Polish  ( 95.1%)               |en  4%|es  0%|fi  0%|nl  1%|pl 95%
+  spacer     Polish  ( 10.8%) Pred: English |en 45%|es 29%|fi  0%|nl 15%|pl 11%
+  kobiet     Polish  ( 11.2%) Pred: Dutch   |en 28%|es  1%|fi  9%|nl 51%|pl 11%
+epoch 3 iteration 36 validation-accuracy 71.0%
+  erased     English ( 80.7%)               |en 81%|es  3%|fi  0%|nl 15%|pl  1%
+  sliding    English ( 80.1%)               |en 80%|es  1%|fi  0%|nl 18%|pl  1%
+  persuade   English ( 26.3%) Pred: Dutch   |en 26%|es 23%|fi  0%|nl 48%|pl  2%
+  enterrado  Spanish ( 96.2%)               |en  1%|es 96%|fi  0%|nl  2%|pl  1%
+  conociste  Spanish ( 80.4%)               |en  7%|es 80%|fi  1%|nl 10%|pl  2%
+  cuadro     Spanish ( 98.3%)               |en  0%|es 98%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 67.5%)               |en  1%|es  7%|fi 68%|nl 12%|pl 12%
+  työntää    Finnish ( 98.6%)               |en  0%|es  0%|fi 99%|nl  0%|pl  1%
+  henkeä     Finnish ( 30.7%) Pred: Dutch   |en  2%|es  1%|fi 31%|nl 53%|pl 13%
+  tering     Dutch   ( 26.0%) Pred: English |en 72%|es  1%|fi  0%|nl 26%|pl  1%
+  verleiding Dutch   ( 44.0%) Pred: English |en 54%|es  1%|fi  0%|nl 44%|pl  1%
+  profiteren Dutch   ( 84.2%)               |en  3%|es 11%|fi  1%|nl 84%|pl  0%
+  kawy       Polish  ( 95.4%)               |en  3%|es  0%|fi  0%|nl  1%|pl 95%
+  spacer     Polish  (  8.2%) Pred: Spanish |en 27%|es 49%|fi  0%|nl 15%|pl  8%
+  kobiet     Polish  (  5.9%) Pred: Dutch   |en 20%|es  0%|fi  1%|nl 73%|pl  6%
+epoch 3 iteration 82 validation-accuracy 79.8%
+  erased     English ( 90.4%)               |en 90%|es  1%|fi  0%|nl  8%|pl  0%
+  sliding    English ( 91.6%)               |en 92%|es  0%|fi  0%|nl  7%|pl  0%
+  persuade   English ( 43.9%)               |en 44%|es 14%|fi  2%|nl 38%|pl  2%
+  enterrado  Spanish ( 95.5%)               |en  2%|es 95%|fi  1%|nl  2%|pl  1%
+  conociste  Spanish ( 31.8%) Pred: English |en 36%|es 32%|fi 14%|nl 16%|pl  3%
+  cuadro     Spanish ( 97.7%)               |en  0%|es 98%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 96.2%)               |en  1%|es  1%|fi 96%|nl  2%|pl  1%
+  työntää    Finnish ( 99.9%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 83.3%)               |en  2%|es  1%|fi 83%|nl 12%|pl  3%
+  tering     Dutch   ( 16.1%) Pred: English |en 83%|es  0%|fi  0%|nl 16%|pl  0%
+  verleiding Dutch   ( 16.0%) Pred: English |en 83%|es  0%|fi  0%|nl 16%|pl  0%
+  profiteren Dutch   ( 63.8%)               |en  9%|es 14%|fi 13%|nl 64%|pl  0%
+  kawy       Polish  ( 91.4%)               |en  6%|es  0%|fi  1%|nl  2%|pl 91%
+  spacer     Polish  (  7.4%) Pred: English |en 54%|es 27%|fi  0%|nl 12%|pl  7%
+  kobiet     Polish  (  7.2%) Pred: Dutch   |en 29%|es  0%|fi  8%|nl 55%|pl  7%
+epoch 3 iteration 123 validation-accuracy 73.8%
+  erased     English ( 68.9%)               |en 69%|es  2%|fi  0%|nl 28%|pl  1%
+  sliding    English ( 65.0%)               |en 65%|es  1%|fi  1%|nl 31%|pl  2%
+  persuade   English ( 24.5%) Pred: Dutch   |en 25%|es 18%|fi  5%|nl 48%|pl  5%
+  enterrado  Spanish ( 93.9%)               |en  1%|es 94%|fi  2%|nl  2%|pl  1%
+  conociste  Spanish ( 36.2%)               |en 18%|es 36%|fi 19%|nl 19%|pl  8%
+  cuadro     Spanish ( 95.0%)               |en  0%|es 95%|fi  1%|nl  0%|pl  3%
+  peliä      Finnish ( 94.1%)               |en  0%|es  1%|fi 94%|nl  2%|pl  3%
+  työntää    Finnish ( 99.7%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 89.2%)               |en  0%|es  0%|fi 89%|nl  7%|pl  3%
+  tering     Dutch   ( 41.1%) Pred: English |en 55%|es  1%|fi  1%|nl 41%|pl  2%
+  verleiding Dutch   ( 35.3%) Pred: English |en 62%|es  1%|fi  1%|nl 35%|pl  1%
+  profiteren Dutch   ( 77.9%)               |en  4%|es  5%|fi 12%|nl 78%|pl  1%
+  kawy       Polish  ( 94.7%)               |en  2%|es  0%|fi  2%|nl  1%|pl 95%
+  spacer     Polish  ( 14.4%) Pred: Spanish |en 26%|es 38%|fi  1%|nl 20%|pl 14%
+  kobiet     Polish  ( 11.6%) Pred: Dutch   |en 11%|es  1%|fi 32%|nl 45%|pl 12%
+epoch 3 iteration 163 validation-accuracy 78.4%
+  erased     English ( 88.8%)               |en 89%|es  3%|fi  0%|nl  8%|pl  0%
+  sliding    English ( 92.4%)               |en 92%|es  0%|fi  0%|nl  7%|pl  0%
+  persuade   English ( 45.4%)               |en 45%|es 17%|fi  3%|nl 34%|pl  1%
+  enterrado  Spanish ( 97.5%)               |en  1%|es 97%|fi  1%|nl  1%|pl  0%
+  conociste  Spanish ( 65.0%)               |en 22%|es 65%|fi  6%|nl  7%|pl  1%
+  cuadro     Spanish ( 99.2%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 98.3%)               |en  0%|es  0%|fi 98%|nl  1%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 97.7%)               |en  0%|es  0%|fi 98%|nl  2%|pl  1%
+  tering     Dutch   ( 15.4%) Pred: English |en 83%|es  0%|fi  0%|nl 15%|pl  0%
+  verleiding Dutch   (  8.9%) Pred: English |en 90%|es  0%|fi  1%|nl  9%|pl  0%
+  profiteren Dutch   ( 47.4%)               |en  6%|es 23%|fi 23%|nl 47%|pl  0%
+  kawy       Polish  ( 90.1%)               |en  7%|es  0%|fi  1%|nl  2%|pl 90%
+  spacer     Polish  (  4.8%) Pred: Spanish |en 36%|es 52%|fi  0%|nl  7%|pl  5%
+  kobiet     Polish  (  9.4%) Pred: Dutch   |en 17%|es  0%|fi 26%|nl 48%|pl  9%
+epoch 3 iteration 206 validation-accuracy 73.2%
+  erased     English ( 63.7%)               |en 64%|es  2%|fi  0%|nl 33%|pl  1%
+  sliding    English ( 69.1%)               |en 69%|es  0%|fi  0%|nl 30%|pl  1%
+  persuade   English ( 15.8%) Pred: Dutch   |en 16%|es 10%|fi  2%|nl 72%|pl  1%
+  enterrado  Spanish ( 94.7%)               |en  1%|es 95%|fi  1%|nl  3%|pl  0%
+  conociste  Spanish ( 42.7%)               |en 16%|es 43%|fi  5%|nl 35%|pl  2%
+  cuadro     Spanish ( 98.7%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 96.0%)               |en  0%|es  0%|fi 96%|nl  3%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 84.7%)               |en  0%|es  0%|fi 85%|nl 13%|pl  2%
+  tering     Dutch   ( 52.1%)               |en 46%|es  0%|fi  0%|nl 52%|pl  1%
+  verleiding Dutch   ( 79.6%)               |en 19%|es  0%|fi  1%|nl 80%|pl  0%
+  profiteren Dutch   ( 87.6%)               |en  1%|es  3%|fi  9%|nl 88%|pl  0%
+  kawy       Polish  ( 93.5%)               |en  4%|es  0%|fi  1%|nl  2%|pl 94%
+  spacer     Polish  (  4.5%) Pred: Spanish |en 29%|es 36%|fi  0%|nl 31%|pl  4%
+  kobiet     Polish  (  8.3%) Pred: Dutch   |en  3%|es  0%|fi  9%|nl 80%|pl  8%
+epoch 3 iteration 249 validation-accuracy 80.6%
+  erased     English ( 90.9%)               |en 91%|es  2%|fi  0%|nl  7%|pl  0%
+  sliding    English ( 91.2%)               |en 91%|es  0%|fi  0%|nl  8%|pl  0%
+  persuade   English ( 37.9%)               |en 38%|es 30%|fi  1%|nl 31%|pl  1%
+  enterrado  Spanish ( 98.8%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 59.1%)               |en 23%|es 59%|fi  3%|nl 14%|pl  1%
+  cuadro     Spanish ( 98.9%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 91.9%)               |en  1%|es  1%|fi 92%|nl  4%|pl  2%
+  työntää    Finnish ( 99.9%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 73.0%)               |en  1%|es  0%|fi 73%|nl 22%|pl  3%
+  tering     Dutch   ( 16.2%) Pred: English |en 83%|es  0%|fi  0%|nl 16%|pl  0%
+  verleiding Dutch   ( 13.2%) Pred: English |en 86%|es  0%|fi  0%|nl 13%|pl  0%
+  profiteren Dutch   ( 70.9%)               |en  9%|es 16%|fi  4%|nl 71%|pl  0%
+  kawy       Polish  ( 92.3%)               |en  6%|es  0%|fi  0%|nl  1%|pl 92%
+  spacer     Polish  (  4.5%) Pred: English |en 53%|es 27%|fi  0%|nl 15%|pl  5%
+  kobiet     Polish  ( 12.0%) Pred: Dutch   |en 14%|es  0%|fi  1%|nl 72%|pl 12%
+epoch 4 iteration 6 validation-accuracy 81.6%
+  erased     English ( 88.6%)               |en 89%|es  2%|fi  0%|nl  9%|pl  1%
+  sliding    English ( 93.3%)               |en 93%|es  0%|fi  0%|nl  6%|pl  0%
+  persuade   English ( 33.6%) Pred: Spanish |en 34%|es 38%|fi  1%|nl 27%|pl  1%
+  enterrado  Spanish ( 99.4%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 93.7%)               |en  5%|es 94%|fi  0%|nl  0%|pl  1%
+  cuadro     Spanish ( 99.4%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 96.8%)               |en  0%|es  0%|fi 97%|nl  1%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 95.9%)               |en  0%|es  0%|fi 96%|nl  3%|pl  1%
+  tering     Dutch   ( 16.8%) Pred: English |en 83%|es  0%|fi  0%|nl 17%|pl  0%
+  verleiding Dutch   ( 21.9%) Pred: English |en 78%|es  0%|fi  0%|nl 22%|pl  0%
+  profiteren Dutch   ( 62.2%)               |en  6%|es 24%|fi  7%|nl 62%|pl  0%
+  kawy       Polish  ( 96.2%)               |en  3%|es  0%|fi  0%|nl  0%|pl 96%
+  spacer     Polish  ( 13.5%) Pred: Spanish |en 29%|es 51%|fi  0%|nl  7%|pl 14%
+  kobiet     Polish  ( 45.4%)               |en  7%|es  0%|fi 20%|nl 26%|pl 45%
+epoch 4 iteration 46 validation-accuracy 80.0%
+  erased     English ( 86.9%)               |en 87%|es  3%|fi  0%|nl  9%|pl  1%
+  sliding    English ( 85.2%)               |en 85%|es  0%|fi  0%|nl 14%|pl  0%
+  persuade   English ( 17.4%) Pred: Spanish |en 17%|es 47%|fi  2%|nl 33%|pl  1%
+  enterrado  Spanish ( 99.2%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 92.2%)               |en  5%|es 92%|fi  0%|nl  1%|pl  2%
+  cuadro     Spanish ( 99.4%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 98.3%)               |en  0%|es  0%|fi 98%|nl  1%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 94.9%)               |en  0%|es  0%|fi 95%|nl  4%|pl  0%
+  tering     Dutch   ( 29.9%) Pred: English |en 69%|es  0%|fi  0%|nl 30%|pl  0%
+  verleiding Dutch   ( 54.7%)               |en 44%|es  0%|fi  0%|nl 55%|pl  0%
+  profiteren Dutch   ( 54.7%)               |en  5%|es 28%|fi 12%|nl 55%|pl  0%
+  kawy       Polish  ( 96.2%)               |en  3%|es  0%|fi  0%|nl  1%|pl 96%
+  spacer     Polish  ( 11.1%) Pred: Spanish |en 19%|es 66%|fi  0%|nl  4%|pl 11%
+  kobiet     Polish  ( 28.6%) Pred: Dutch   |en  8%|es  0%|fi 21%|nl 42%|pl 29%
+epoch 4 iteration 89 validation-accuracy 67.2%
+  erased     English ( 85.9%)               |en 86%|es 10%|fi  0%|nl  1%|pl  3%
+  sliding    English ( 98.3%)               |en 98%|es  0%|fi  0%|nl  1%|pl  0%
+  persuade   English ( 24.2%) Pred: Spanish |en 24%|es 66%|fi  1%|nl  2%|pl  7%
+  enterrado  Spanish ( 99.1%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  conociste  Spanish ( 93.1%)               |en  4%|es 93%|fi  0%|nl  0%|pl  3%
+  cuadro     Spanish ( 98.6%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 94.6%)               |en  0%|es  1%|fi 95%|nl  0%|pl  4%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 91.9%)               |en  0%|es  0%|fi 92%|nl  1%|pl  6%
+  tering     Dutch   (  2.4%) Pred: English |en 96%|es  1%|fi  0%|nl  2%|pl  1%
+  verleiding Dutch   (  0.9%) Pred: English |en 99%|es  0%|fi  0%|nl  1%|pl  0%
+  profiteren Dutch   (  1.9%) Pred: Spanish |en 14%|es 81%|fi  1%|nl  2%|pl  2%
+  kawy       Polish  ( 99.5%)               |en  0%|es  0%|fi  0%|nl  0%|pl100%
+  spacer     Polish  ( 22.4%) Pred: Spanish |en 12%|es 65%|fi  0%|nl  1%|pl 22%
+  kobiet     Polish  ( 92.4%)               |en  4%|es  1%|fi  2%|nl  2%|pl 92%
+epoch 4 iteration 130 validation-accuracy 80.4%
+  erased     English ( 92.8%)               |en 93%|es  1%|fi  0%|nl  5%|pl  0%
+  sliding    English ( 91.3%)               |en 91%|es  0%|fi  0%|nl  9%|pl  0%
+  persuade   English ( 39.3%) Pred: Dutch   |en 39%|es  9%|fi  2%|nl 49%|pl  0%
+  enterrado  Spanish ( 98.1%)               |en  0%|es 98%|fi  1%|nl  1%|pl  0%
+  conociste  Spanish ( 37.3%) Pred: English |en 46%|es 37%|fi  3%|nl 13%|pl  0%
+  cuadro     Spanish ( 99.5%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 99.1%)               |en  0%|es  0%|fi 99%|nl  1%|pl  0%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 94.2%)               |en  0%|es  0%|fi 94%|nl  5%|pl  0%
+  tering     Dutch   ( 18.3%) Pred: English |en 81%|es  0%|fi  0%|nl 18%|pl  0%
+  verleiding Dutch   ( 14.3%) Pred: English |en 85%|es  0%|fi  0%|nl 14%|pl  0%
+  profiteren Dutch   ( 75.4%)               |en  6%|es  8%|fi 11%|nl 75%|pl  0%
+  kawy       Polish  ( 87.4%)               |en  9%|es  0%|fi  1%|nl  3%|pl 87%
+  spacer     Polish  (  2.6%) Pred: Spanish |en 34%|es 52%|fi  0%|nl 11%|pl  3%
+  kobiet     Polish  (  4.9%) Pred: Dutch   |en 10%|es  0%|fi 15%|nl 69%|pl  5%
+epoch 4 iteration 164 validation-accuracy 79.8%
+  erased     English ( 94.7%)               |en 95%|es  2%|fi  0%|nl  3%|pl  0%
+  sliding    English ( 87.9%)               |en 88%|es  0%|fi  0%|nl 12%|pl  0%
+  persuade   English ( 46.0%)               |en 46%|es 12%|fi  0%|nl 42%|pl  0%
+  enterrado  Spanish ( 99.5%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 89.6%)               |en  9%|es 90%|fi  0%|nl  2%|pl  0%
+  cuadro     Spanish ( 99.9%)               |en  0%|es100%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 96.6%)               |en  0%|es  1%|fi 97%|nl  2%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 84.7%)               |en  1%|es  0%|fi 85%|nl 14%|pl  1%
+  tering     Dutch   ( 17.9%) Pred: English |en 82%|es  0%|fi  0%|nl 18%|pl  0%
+  verleiding Dutch   ( 18.1%) Pred: English |en 82%|es  0%|fi  0%|nl 18%|pl  0%
+  profiteren Dutch   ( 68.6%)               |en  7%|es 23%|fi  1%|nl 69%|pl  0%
+  kawy       Polish  ( 96.6%)               |en  3%|es  0%|fi  0%|nl  1%|pl 97%
+  spacer     Polish  (  1.1%) Pred: Spanish |en 27%|es 67%|fi  0%|nl  5%|pl  1%
+  kobiet     Polish  ( 21.4%) Pred: Dutch   |en 11%|es  0%|fi  3%|nl 64%|pl 21%
+epoch 4 iteration 212 validation-accuracy 84.6%
+  erased     English ( 95.0%)               |en 95%|es  1%|fi  0%|nl  3%|pl  0%
+  sliding    English ( 90.1%)               |en 90%|es  0%|fi  0%|nl  9%|pl  0%
+  persuade   English ( 57.6%)               |en 58%|es 12%|fi  1%|nl 29%|pl  1%
+  enterrado  Spanish ( 98.7%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  conociste  Spanish ( 86.0%)               |en  9%|es 86%|fi  1%|nl  3%|pl  1%
+  cuadro     Spanish ( 98.2%)               |en  0%|es 98%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 97.5%)               |en  0%|es  1%|fi 97%|nl  0%|pl  1%
+  työntää    Finnish ( 99.9%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 80.8%)               |en  1%|es  0%|fi 81%|nl 15%|pl  2%
+  tering     Dutch   ( 16.1%) Pred: English |en 83%|es  0%|fi  0%|nl 16%|pl  0%
+  verleiding Dutch   ( 12.7%) Pred: English |en 87%|es  0%|fi  0%|nl 13%|pl  0%
+  profiteren Dutch   ( 79.7%)               |en  6%|es 11%|fi  3%|nl 80%|pl  0%
+  kawy       Polish  ( 99.2%)               |en  1%|es  0%|fi  0%|nl  0%|pl 99%
+  spacer     Polish  (  5.9%) Pred: Spanish |en 36%|es 43%|fi  0%|nl 15%|pl  6%
+  kobiet     Polish  ( 63.5%)               |en  5%|es  0%|fi  1%|nl 30%|pl 63%
+epoch 4 iteration 250 validation-accuracy 82.8%
+  erased     English ( 89.6%)               |en 90%|es  2%|fi  0%|nl  7%|pl  1%
+  sliding    English ( 85.8%)               |en 86%|es  0%|fi  0%|nl 14%|pl  0%
+  persuade   English ( 32.2%) Pred: Dutch   |en 32%|es 15%|fi  2%|nl 50%|pl  1%
+  enterrado  Spanish ( 99.0%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 86.7%)               |en  6%|es 87%|fi  2%|nl  3%|pl  2%
+  cuadro     Spanish ( 97.7%)               |en  0%|es 98%|fi  0%|nl  0%|pl  2%
+  peliä      Finnish ( 99.2%)               |en  0%|es  0%|fi 99%|nl  0%|pl  0%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 96.7%)               |en  0%|es  0%|fi 97%|nl  3%|pl  0%
+  tering     Dutch   ( 31.1%) Pred: English |en 68%|es  0%|fi  0%|nl 31%|pl  0%
+  verleiding Dutch   ( 41.4%) Pred: English |en 58%|es  0%|fi  0%|nl 41%|pl  0%
+  profiteren Dutch   ( 75.0%)               |en  3%|es  7%|fi 14%|nl 75%|pl  0%
+  kawy       Polish  ( 94.7%)               |en  4%|es  0%|fi  0%|nl  1%|pl 95%
+  spacer     Polish  ( 11.6%) Pred: Spanish |en 36%|es 38%|fi  0%|nl 14%|pl 12%
+  kobiet     Polish  ( 42.6%) Pred: Dutch   |en  5%|es  0%|fi  9%|nl 44%|pl 43%
+epoch 5 iteration 22 validation-accuracy 84.6%
+  erased     English ( 96.2%)               |en 96%|es  1%|fi  0%|nl  3%|pl  0%
+  sliding    English ( 82.0%)               |en 82%|es  0%|fi  0%|nl 18%|pl  0%
+  persuade   English ( 46.9%)               |en 47%|es 12%|fi  1%|nl 40%|pl  0%
+  enterrado  Spanish ( 99.1%)               |en  0%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 87.8%)               |en  8%|es 88%|fi  0%|nl  2%|pl  1%
+  cuadro     Spanish ( 99.1%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  peliä      Finnish ( 98.9%)               |en  0%|es  0%|fi 99%|nl  0%|pl  0%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 93.2%)               |en  0%|es  0%|fi 93%|nl  6%|pl  0%
+  tering     Dutch   ( 27.4%) Pred: English |en 72%|es  0%|fi  0%|nl 27%|pl  0%
+  verleiding Dutch   ( 36.2%) Pred: English |en 64%|es  0%|fi  0%|nl 36%|pl  0%
+  profiteren Dutch   ( 73.5%)               |en  7%|es 15%|fi  4%|nl 74%|pl  0%
+  kawy       Polish  ( 92.4%)               |en  7%|es  0%|fi  0%|nl  1%|pl 92%
+  spacer     Polish  (  6.8%) Pred: English |en 49%|es 36%|fi  0%|nl  8%|pl  7%
+  kobiet     Polish  ( 32.5%) Pred: Dutch   |en  8%|es  0%|fi  8%|nl 52%|pl 32%
+epoch 5 iteration 62 validation-accuracy 84.0%
+  erased     English ( 96.7%)               |en 97%|es  0%|fi  0%|nl  3%|pl  0%
+  sliding    English ( 90.1%)               |en 90%|es  0%|fi  0%|nl 10%|pl  0%
+  persuade   English ( 49.0%)               |en 49%|es  8%|fi  0%|nl 43%|pl  0%
+  enterrado  Spanish ( 98.8%)               |en  1%|es 99%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 57.2%)               |en 22%|es 57%|fi  1%|nl 16%|pl  4%
+  cuadro     Spanish ( 98.1%)               |en  0%|es 98%|fi  0%|nl  0%|pl  2%
+  peliä      Finnish ( 98.1%)               |en  0%|es  0%|fi 98%|nl  1%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 86.3%)               |en  1%|es  0%|fi 86%|nl 12%|pl  1%
+  tering     Dutch   ( 15.4%) Pred: English |en 84%|es  0%|fi  0%|nl 15%|pl  0%
+  verleiding Dutch   ( 13.8%) Pred: English |en 86%|es  0%|fi  0%|nl 14%|pl  0%
+  profiteren Dutch   ( 82.2%)               |en  8%|es  8%|fi  2%|nl 82%|pl  0%
+  kawy       Polish  ( 97.8%)               |en  2%|es  0%|fi  0%|nl  0%|pl 98%
+  spacer     Polish  ( 24.2%) Pred: English |en 39%|es 26%|fi  0%|nl 11%|pl 24%
+  kobiet     Polish  ( 91.5%)               |en  1%|es  0%|fi  1%|nl  6%|pl 91%
+epoch 5 iteration 106 validation-accuracy 84.8%
+  erased     English ( 94.2%)               |en 94%|es  1%|fi  0%|nl  4%|pl  0%
+  sliding    English ( 86.6%)               |en 87%|es  0%|fi  0%|nl 13%|pl  0%
+  persuade   English ( 36.8%) Pred: Dutch   |en 37%|es 17%|fi  1%|nl 46%|pl  0%
+  enterrado  Spanish ( 99.7%)               |en  0%|es100%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 90.4%)               |en  3%|es 90%|fi  0%|nl  5%|pl  1%
+  cuadro     Spanish ( 99.6%)               |en  0%|es100%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 97.5%)               |en  0%|es  0%|fi 97%|nl  1%|pl  1%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 88.8%)               |en  0%|es  0%|fi 89%|nl 10%|pl  1%
+  tering     Dutch   ( 18.3%) Pred: English |en 81%|es  0%|fi  0%|nl 18%|pl  0%
+  verleiding Dutch   ( 16.9%) Pred: English |en 83%|es  0%|fi  0%|nl 17%|pl  0%
+  profiteren Dutch   ( 78.7%)               |en  4%|es 14%|fi  3%|nl 79%|pl  0%
+  kawy       Polish  ( 97.2%)               |en  2%|es  0%|fi  0%|nl  0%|pl 97%
+  spacer     Polish  ( 17.2%) Pred: Spanish |en 33%|es 35%|fi  0%|nl 15%|pl 17%
+  kobiet     Polish  ( 67.6%)               |en  3%|es  0%|fi  1%|nl 28%|pl 68%
+epoch 5 iteration 143 validation-accuracy 76.4%
+  erased     English ( 78.2%)               |en 78%|es  1%|fi  0%|nl 21%|pl  0%
+  sliding    English ( 64.1%)               |en 64%|es  0%|fi  0%|nl 36%|pl  0%
+  persuade   English (  5.2%) Pred: Dutch   |en  5%|es  1%|fi  0%|nl 94%|pl  0%
+  enterrado  Spanish ( 92.6%)               |en  0%|es 93%|fi  1%|nl  6%|pl  0%
+  conociste  Spanish ( 53.7%)               |en  5%|es 54%|fi  1%|nl 40%|pl  1%
+  cuadro     Spanish ( 99.6%)               |en  0%|es100%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 98.2%)               |en  0%|es  0%|fi 98%|nl  1%|pl  0%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 69.2%)               |en  0%|es  0%|fi 69%|nl 30%|pl  0%
+  tering     Dutch   ( 57.5%)               |en 42%|es  0%|fi  0%|nl 58%|pl  0%
+  verleiding Dutch   ( 95.8%)               |en  4%|es  0%|fi  0%|nl 96%|pl  0%
+  profiteren Dutch   ( 97.8%)               |en  1%|es  1%|fi  1%|nl 98%|pl  0%
+  kawy       Polish  ( 84.5%)               |en 11%|es  0%|fi  0%|nl  4%|pl 85%
+  spacer     Polish  (  5.6%) Pred: English |en 44%|es 16%|fi  0%|nl 34%|pl  6%
+  kobiet     Polish  (  7.0%) Pred: Dutch   |en  2%|es  0%|fi  3%|nl 88%|pl  7%
+epoch 5 iteration 187 validation-accuracy 80.8%
+  erased     English ( 96.4%)               |en 96%|es  2%|fi  0%|nl  2%|pl  0%
+  sliding    English ( 92.9%)               |en 93%|es  0%|fi  0%|nl  7%|pl  0%
+  persuade   English ( 53.3%)               |en 53%|es  6%|fi  1%|nl 40%|pl  0%
+  enterrado  Spanish ( 99.8%)               |en  0%|es100%|fi  0%|nl  0%|pl  0%
+  conociste  Spanish ( 57.4%)               |en 22%|es 57%|fi  1%|nl 19%|pl  0%
+  cuadro     Spanish ( 99.9%)               |en  0%|es100%|fi  0%|nl  0%|pl  0%
+  peliä      Finnish ( 99.4%)               |en  0%|es  0%|fi 99%|nl  0%|pl  0%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 95.7%)               |en  0%|es  0%|fi 96%|nl  4%|pl  0%
+  tering     Dutch   ( 12.9%) Pred: English |en 87%|es  0%|fi  0%|nl 13%|pl  0%
+  verleiding Dutch   ( 14.9%) Pred: English |en 85%|es  0%|fi  0%|nl 15%|pl  0%
+  profiteren Dutch   ( 62.0%)               |en  5%|es 24%|fi  9%|nl 62%|pl  0%
+  kawy       Polish  ( 80.3%)               |en 17%|es  0%|fi  1%|nl  2%|pl 80%
+  spacer     Polish  (  1.9%) Pred: Spanish |en 23%|es 70%|fi  0%|nl  5%|pl  2%
+  kobiet     Polish  (  8.0%) Pred: Dutch   |en  4%|es  0%|fi 39%|nl 49%|pl  8%
+epoch 5 iteration 229 validation-accuracy 82.6%
+  erased     English ( 96.2%)               |en 96%|es  1%|fi  0%|nl  1%|pl  1%
+  sliding    English ( 93.1%)               |en 93%|es  0%|fi  0%|nl  7%|pl  0%
+  persuade   English ( 56.2%)               |en 56%|es 28%|fi  2%|nl 11%|pl  3%
+  enterrado  Spanish ( 98.7%)               |en  0%|es 99%|fi  0%|nl  0%|pl  1%
+  conociste  Spanish ( 67.5%)               |en 13%|es 67%|fi  6%|nl  9%|pl  4%
+  cuadro     Spanish ( 96.1%)               |en  0%|es 96%|fi  1%|nl  0%|pl  3%
+  peliä      Finnish ( 97.0%)               |en  0%|es  0%|fi 97%|nl  0%|pl  2%
+  työntää    Finnish (100.0%)               |en  0%|es  0%|fi100%|nl  0%|pl  0%
+  henkeä     Finnish ( 93.0%)               |en  1%|es  0%|fi 93%|nl  4%|pl  2%
+  tering     Dutch   ( 16.6%) Pred: English |en 83%|es  0%|fi  0%|nl 17%|pl  0%
+  verleiding Dutch   (  8.1%) Pred: English |en 92%|es  0%|fi  0%|nl  8%|pl  0%
+  profiteren Dutch   ( 56.0%)               |en 11%|es 23%|fi  7%|nl 56%|pl  3%
+  kawy       Polish  ( 96.4%)               |en  3%|es  0%|fi  0%|nl  0%|pl 96%
+  spacer     Polish  ( 12.9%) Pred: Spanish |en 27%|es 57%|fi  0%|nl  4%|pl 13%
+  kobiet     Polish  ( 41.0%)               |en  4%|es  1%|fi 24%|nl 29%|pl 41%
+Your final test set accuracy is: 82.000000%
+*** PASS: check_lang_id
+
+### Question q4: 7/7 ###
+
+Finished at 10:31:10
+
+Provisional grades
+==================
+Question q1: 6/6
+Question q2: 6/6
+Question q3: 6/6
+Question q4: 7/7
+------------------
+Total: 25/25
+
+Your grades are NOT yet registered.  To register your grades, make sure
+to follow your instructor's guidelines to receive credit on your project.
+
